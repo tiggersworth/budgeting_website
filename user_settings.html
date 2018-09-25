@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<link type = "text/css" rel = "stylesheet" href = "usersettings.css" media = "screen,print"/>
+		<link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<!--<script src = "usersettings.js"</script>-->
+		<link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	</head>
+	<body>
+	<script>
+		function change(){
+			var input = document.getElementById("firstname").value;
+			document.getElementById("name").value = input;
+		}
+	</script>
+		<div class = "profile">
+			<div id = "header">
+				<p>Profile</p>
+			</div>
+			<div class = "sectionheaders"> <!-- like name, address, city, etc-->
+					<div class = "titles">First name:</div>
+					<div class = "titles" id = "name">Jack</div>
+					<input type = "button" class = "titles" value = "Edit!" onclick = "change();">
+					<form class = "titles" onsubmit = "return true;">
+						<input type = "text" id = "firstname">
+					</form>
+			</div>
+			<div class = "sectionheaders"> <!-- like name, address, city, etc-->
+					<div class = "titles">Last name:</div>
+					<div class = "titles" id = "name">Bob</div>
+					<input type = "button" class = "titles" value = "Edit!" onclick = "change();">
+					<form class = "titles" onsubmit = "return true;">
+						<input type = "text" id = "lastname">
+					</form>
+			</div>
+			<div class = "sectionheaders"> <!-- like name, address, city, etc-->
+					<div class = "titles">Address:</div>
+					<div class = "titles" id = "name">111 Hudson Street</div>
+					<input type = "button" class = "titles" value = "Edit!" onclick = "change();">
+					<form class = "titles" onsubmit = "return true;">
+						<input type = "text" id = "lastname">
+					</form>
+			</div>
+			<div class = "sectionheaders"> <!-- like name, address, city, etc-->
+					<div class = "titles">City:</div>
+					<div class = "titles" id = "name">New York</div>
+					<input type = "button" class = "titles" value = "Edit!" onclick = "change();">
+					<form class = "titles" onsubmit = "return true;">
+						<input type = "text" id = "lastname">
+					</form>
+			</div>
+			<div class = "sectionheaders"> <!-- like name, address, city, etc-->
+					<div class = "titles">State:</div>
+					<div class = "titles" id = "name">NY</div>
+					<input type = "button" class = "titles" value = "Edit!" onclick = "change();">
+					<form class = "titles" onsubmit = "return true;">
+						<input type = "text" id = "lastname">
+					</form>
+			</div>
+		</div>
+	</body>
+</html>
