@@ -1,0 +1,23 @@
+.profile{
+	margin-left:auto;
+	margin-right:auto;
+	/*border-bottom: 1px solid black;*/
+	
+}
+.information{
+	float: left;
+	display: inline-block;
+}
+
+#header{
+	margin-left:auto;
+	margin-right:auto;
+	font-size: 200%;
+	font-family:calibri;
+	border-bottom: 1px solid black;
+}
+
+.titles{
+	display:inline-block;
+	margin-right: 6px;
+}
