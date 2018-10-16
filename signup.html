@@ -19,22 +19,22 @@
 <div class='container'>
     <div class="d-flex align-items-center flex-column justify-content-center h-100 bg-dark text-white" id="header">
         <h1 class="display-4">Welcome!</h1>
-        <form>
+        <div class="alert alert-error"></div>
+        <form class="form" action="signup.html" method="post" enctype="multipart/form-data" autocomplete="off">
             <div class="form-group">
-                <input class="form-control form-control-lg" placeholder="Email Address" type="text">
+                <input class="form-control form-control-lg" placeholder="Email Address" type="text" required/>
             </div>
             <div class="form-group">
-                <input class="form-control form-control-lg" placeholder="Username" type="text">
+                <input class="form-control form-control-lg" placeholder="Username" type="text" required/>
             </div>
             <div class="form-group">
-                <input type="password" class="form-control form control-lg" id="exampleInputPassword1" placeholder="Password" type="text">
+                <input type="password" class="form-control form control-lg" id="exampleInputPassword1" placeholder="Password" type="text" required/>
             </div>
             <div class="form-group">
-                <input type="password" class="form-control form control-lg" id="exampleInputConfirm" placeholder="Confirm Password" type="text">
+                <input type="password" class="form-control form control-lg" id="exampleInputConfirm" placeholder="Confirm Password" type="text" required/>
             </div>
-            <div class="form-group">
-                <input type="button" class="btn btn-info btn-lg btn-block" value="Sign Up" onclick="location.href = 'login.html';">
-            </div>
+                <input type="submit" value = "Register" name="register" class="btn btn-info btn-lg btn-block" value="Sign Up"/>
+            <!--<input type="submit" value = "Register" name="register" class="btn btn-info btn-lg btn-block" value="Sign Up" onclick="location.href = 'login.html';"/>-->
         </form>
     </div>
 
