@@ -6,6 +6,14 @@ $conn = sqlsrv_connect( $serverName, $connectionInfo);
 
 if( $conn ) {
      echo "Connection established.<br />";
+         if ($_POST['password'] == $_POST['confirmpassword']) {
+
+             //define other variables with submitted values from $_POST
+             $username = $mysqli->real_escape_string($_POST['username']);
+             $email = $mysqli->real_escape_string($_POST['email']);
+
+             //md5 hash password for security
+             $password = md5($_POST['password']);
 }else{
      echo "Connection could not be established.<br />";
      die( print_r( sqlsrv_errors(), true));
