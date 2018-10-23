@@ -7,24 +7,24 @@
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<script>
-  function readTextFile(file)
-  {
-      var rawFile = new XMLHttpRequest();
-      rawFile.open("GET", file, false);
-      rawFile.onreadystatechange = function ()
-      {
-          if(rawFile.readyState === 4)
-          {
-              if(rawFile.status === 200 || rawFile.status == 0)
-              {
-                  var allText = rawFile.responseText;
-                  alert(allText);
-              }
-          }
-      }
-      rawFile.send(null);
-  }
+        <script type="text/javascript">
+                function loadFile(o)
+                {
+                    var fr = new FileReader();
+                    fr.onload = function(e)
+                        {
+                            showDataFile(e, o);
+                        };
+                    fr.readAsText(o.files[0]);
+                }
+
+                function showDataFile(e, o)
+                {
+                    document.getElementById("data").innerText = e.target.result;
+                }
+            </script>
+    </head>
+</html>
 </script>
 </head>
 <style>
@@ -45,8 +45,12 @@
     <div class="form-group">
       <input type="password" class="form-control form control-lg" id="exampleInputPassword1" placeholder="Password" type="text">
     </div>
+        <input type="file" onchange="loadFile(this)">
+        <pre id="data"></pre>
     <div class="form-group">
-      <input type="button" class="btn btn-info btn-lg btn-block" value="Log In" onclick="location.href = 'home_page.html';">
+      <input type="button" class="btn btn-info btn-lg btn-block" value="Log In" onclick="readTextFile()">
+
+
     </div>
   </form>
     <a href="home_page.html">Forgot Username</a>
