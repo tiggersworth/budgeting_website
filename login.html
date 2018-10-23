@@ -7,7 +7,26 @@
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+<script>
+  function readTextFile(file)
+  {
+      var rawFile = new XMLHttpRequest();
+      rawFile.open("GET", file, false);
+      rawFile.onreadystatechange = function ()
+      {
+          if(rawFile.readyState === 4)
+          {
+              if(rawFile.status === 200 || rawFile.status == 0)
+              {
+                  var allText = rawFile.responseText;
+                  alert(allText);
+              }
+          }
+      }
+      rawFile.send(null);
+  }
+</script>
+</head>
 <style>
   .container {
     height: 100vh;
