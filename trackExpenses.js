@@ -5,7 +5,8 @@ document.getElementById('file').onchange = function(){
   var fileInput = document.getElementById('file');
 
   var file = this.files[0];
-  var textType = /text.*/;
+  var textType = /text.plain/; //.* means everything so changed to .plain
+  console.log(file.type);
 
   if (file.type.match(textType)) {
     var reader = new FileReader();
