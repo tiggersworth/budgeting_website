@@ -1,6 +1,32 @@
 var expenses = [['Charges', 'Percent of Budget']];
 
+document.getElementById('file').onchange = function(){
 
+  var file = this.files[0];
+
+  var reader = new FileReader();
+  reader.onload = function(progressEvent){
+    // Entire file
+    //console.log(this.result);
+
+    // By lines
+    var lines = this.result.split('\n');
+    for(var line = 0; line < lines.length; line++){
+      ///console.log();
+      var data = lines[line];
+
+      if(data !== null && data !== '') {
+        var category_price = data.split(' ');
+        console.log(category_price[1]);
+
+        var price = parseInt(category_price[1]);
+        category_price[1] = price;
+        expenses.push(category_price);
+      }
+    }
+
+    console.log(expenses);
+  };
   reader.readAsText(file);
 
   // Load google charts
