@@ -59,6 +59,7 @@ document.getElementById('file').onchange = function(){
     }
 
     fileInput.disabled = true;
+    fileDisplayArea.innerText = "";
   } else {
     fileDisplayArea.innerText = "File not supported!";
   }
