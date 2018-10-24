@@ -1,3 +1,25 @@
+<?php
+/* form.php */
+$serverName = "serverName\\sqlexpress"; //serverName\instanceName
+$connectionInfo = array( "Database"=>"dbName", "UID"=>"userName", "PWD"=>"password");
+$conn = sqlsrv_connect( $serverName, $connectionInfo);
+
+if( $conn ) {
+     echo "Connection established.<br />";
+         if ($_POST['password'] == $_POST['confirmpassword']) {
+
+             //define other variables with submitted values from $_POST
+             $username = $mysqli->real_escape_string($_POST['username']);
+             $email = $mysqli->real_escape_string($_POST['email']);
+
+             //md5 hash password for security
+             $password = md5($_POST['password']);
+}else{
+     echo "Connection could not be established.<br />";
+     die( print_r( sqlsrv_errors(), true));
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,6 +35,7 @@
             height: 100vh;
         }
     </style>
+
 <body>
 
 <div class='container'>
@@ -21,32 +44,20 @@
         <div class="alert alert-error"></div>
         <form class="form" action="signup.html" method="post" enctype="multipart/form-data" autocomplete="off">
             <div class="form-group">
-                <input class="form-control form-control-lg" id="inputEmail" placeholder="Email Address" type="text" required/>
+                <input class="form-control form-control-lg" placeholder="Email Address" type="text" required/>
             </div>
             <div class="form-group">
-                <input class="form-control form-control-lg" id="inputUsername" placeholder="Username" type="text" required/>
+                <input class="form-control form-control-lg" placeholder="Username" type="text" required/>
             </div>
             <div class="form-group">
-                <input type="password" class="form-control form control-lg" id="inputPassword" id="exampleInputPassword1" placeholder="Password" type="text" required/>
+                <input type="password" class="form-control form control-lg" id="exampleInputPassword1" placeholder="Password" type="text" required/>
             </div>
             <div class="form-group">
-                <input type="password" class="form-control form control-lg" placeholder="Confirm Password" type="text" required/>
+                <input type="password" class="form-control form control-lg" id="exampleInputConfirm" placeholder="Confirm Password" type="text" required/>
             </div>
-                <button type="button" id="submitButton" title="Save as text file">Create Account</button>
-
-            <input type="submit" value = "Continue to Log-In" name="register" class="btn btn-info btn-lg btn-block" value="Sign Up" onclick="location.href = 'login.html';"/>
+                <input type="submit" value = "Register" name="register" class="btn btn-info btn-lg btn-block" value="Sign Up"/>
+            <!--<input type="submit" value = "Register" name="register" class="btn btn-info btn-lg btn-block" value="Sign Up" onclick="location.href = 'login.html';"/>-->
         </form>
-
-        <script type="text/javascript">
-    // when document is ready
-    document.getElementById("submitButton").onclick = function() {
-        // when clicked the button
-        var content = document.getElementById('inputEmail').value + '\n' + document.getElementById('inputEmail').value + '\n' + document.getElementById('inputPassword').value
-        // a [save as] dialog will be shown
-        window.open("data:application/txt," + encodeURIComponent(content), "_self");
-    }
-        </script>
-
     </div>
 
     <!--<div class="container" id="content">-->

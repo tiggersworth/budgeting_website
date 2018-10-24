@@ -7,7 +7,49 @@
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script type="text/javascript">
 
+        var res = "";
+        var fields = "";
+        var user = "";
+        var pass = "";
+
+                function loadFile(o)
+                {
+                    var fr = new FileReader();
+                    fr.onload = function(e)
+                        {
+                            showDataFile(e, o);
+                        };
+                    fr.readAsText(o.files[0]); //reads
+                }
+
+                function showDataFile(e, o)
+                {
+                  // document.getElementById("data").innerText = e.target.result;
+                  // shows the text for testing
+                  res = e.target.result;
+                  fields = res.split('\n');
+                  user = fields[1];
+                  pass = fields[2];
+
+                }
+
+                function readTextFile(e) {
+                  console.log(document.getElementById("username").value);
+                  if(document.getElementById("username").value == user && document.getElementById("password").value == pass) {
+                    window.location.replace("home_page.html");
+                  }
+                  else {
+                    alert("Incorrect credentials");
+                  }
+                }
+
+            </script>
+    </head>
+</html>
+</script>
+</head>
 <style>
   .container {
     height: 100vh;
@@ -21,13 +63,17 @@
   <h1 class="display-4">Welcome!</h1>
   <form>
     <div class="form-group">
-      <input class="form-control form-control-lg" placeholder="Username" type="text">
+      <input class="form-control form-control-lg" id="username" placeholder="Username" type="text">
     </div>
     <div class="form-group">
-      <input type="password" class="form-control form control-lg" id="exampleInputPassword1" placeholder="Password" type="text">
+      <input type="password" class="form-control form control-lg" id="password" placeholder="Password" type="text">
     </div>
+        <input type="file" onchange="loadFile(this)">
+        <pre id="data"></pre>
     <div class="form-group">
-      <input type="button" class="btn btn-info btn-lg btn-block" value="Log In" onclick="location.href = 'home_page.html';">
+      <input type="button" class="btn btn-info btn-lg btn-block" value="Log In" onclick="readTextFile()">
+
+
     </div>
   </form>
     <a href="home_page.html">Forgot Username</a>
