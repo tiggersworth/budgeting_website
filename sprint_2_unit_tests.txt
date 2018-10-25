@@ -1,0 +1,15 @@
+Give Feedback HTML Skeleton Unit Test
+1. Client signs up/logs in
+2. Client clicks Give Feedback tab on home page
+3. Client is taken to give feedback page
+4. Client can enter text/feedback in comment box
+5. Client can click submit
+6. Popup saying "submission rececived" appears to confirm submission
+
+Display Articles Unit Test
+1. Client signs up/logs in
+2. Client lands on home page
+3. Client sees list of articles to the left of home page
+4. Client can scroll down the box containing different articles
+5. Client can click on links
+6. Client is directed to different articles depending on which link was clicked
