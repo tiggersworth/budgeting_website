@@ -13,3 +13,24 @@ Display Articles Unit Test
 4. Client can scroll down the box containing different articles
 5. Client can click on links
 6. Client is directed to different articles depending on which link was clicked
+
+Insert Data to Create Budget Unit Test 
+1. Budgeter signs up 
+2. Budgeter logs in 
+3. Budgeter is taken to the Insert Data to Create Budget page 
+4. Budgeter can enter as many categories and costs as they want 
+5. Budgeter hits "create my Budget" button
+
+Forgot Username Page Unit Test 
+1. Budgeter tries to sign in 
+2. Budgeter is unsuccessful 
+3. Budgeter clicks on the Forgot username? link 
+4. Budgeter enters in their email
+5. Budgeter clicks on the "Send my email" button 
+
+Profile Setting Page Unit Test 
+1. Budgeter signs in 
+2. Budgeter is brought to home page 
+3. Budgeter clicks on the profile setting on the navigation bar 
+4. Budgeter enters information about themselves
+5. Budgeter clicks on the "submit changes" button
