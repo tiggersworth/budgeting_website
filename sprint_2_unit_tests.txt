@@ -34,3 +34,17 @@ Profile Setting Page Unit Test
 3. Budgeter clicks on the profile setting on the navigation bar 
 4. Budgeter enters information about themselves
 5. Budgeter clicks on the "submit changes" button
+
+Password Credential Unit test
+1.Client type password
+2.if the password is less than 8 digits, warning shows on top of the website
+2.if the password does not contain Big letter, warning shows on top of the website
+3.if the password does not contain numerical characters, warning shows on top of the website
+4.if the password does not contain special characters, warning shows on top of the website
+5. If the retype does not match the original password, warning shows on top of the website
+
+Delete profile page unit test
+1.Client currently on profile setting page
+2.Client decided to delete profile
+3.Client click on delete profile button on the left side of the page
+4.Client see the delete profile page
