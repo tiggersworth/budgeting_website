@@ -68,3 +68,73 @@ Disable Choose File button after file upload unit test
 3. Select an appropriate file with .txt extension EX: budget.txt
 4. "Choose File" button should be disabled
 ~~~ Expense Tracker Page ~~~
+
+~~~ Sign up (txt file) ~~~
+
+Create and link button to reading the Text File function
+Task Tests:
+1.) Sign in.
+2.) Fill out forms.
+3.) Load file.
+4.) Loading file should read the file out. Print to console.
+
+Continue to login button
+1.) Click sign up.
+2.) Fill out forms.
+3.) Download data.
+4.) Clicking continue to log in should redirect to log in page
+
+Choose file button
+1.) Click log in.
+2.) Fill out forms.
+3.) Clicking load file should prompt you to load a file.
+
+Read from txt database
+1.) Click sign in
+2.) Fill out forms for the sign up.
+3.) Should read and create variables in console
+
+Show textfile chosen
+1.) Click login.
+2.) Fill out forms.
+3.) Load a file.
+4.) File loaded should show the file name.
+5.) File loaded should match file shown on page next to load file button.
+
+Validate credentials from textfile
+1.) Go to log in,
+2.) Input forms.
+3.) load the file for the desired client.
+4.) click log in.
+5.) Should be on the homepage.
+
+Display incorrect alert when login credentials are wrong
+1.) Go to log in page.
+2.) fill out log in forms. (password incorrectly AND user incorrectly)
+3.) load user file.
+4.) try to log in with incorrect forms.
+5.) alert should pop up.
+
+Download Database
+Task Test:
+1.) Click sign up.
+2.) Create an account.
+3.) Fill out forms.
+4.) Client will be prompted to download data. Download data into user data folder.
+
+Write user sign up details to text files
+1.) Check for file in userTextfiles for "usernameGoesHere.txt".
+2.) Should have three fields separated by lines.
+3.) First line should be email, followed by username and finally password.
+
+Create Dummy User locally
+1.) Look in folder for user dummy.txt
+2.) Dummy.txt should have 3 strings
+3.) First one is email.
+4.) 2nd one is username.
+5.) 3rd one is password.
+
+~~~ Sign up ~~~
+
+
+
