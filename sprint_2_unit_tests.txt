@@ -14,24 +14,24 @@ Display Articles Unit Test
 5. Client can click on links
 6. Client is directed to different articles depending on which link was clicked
 
-Insert Data to Create Budget Unit Test 
-1. Budgeter signs up 
-2. Budgeter logs in 
-3. Budgeter is taken to the Insert Data to Create Budget page 
-4. Budgeter can enter as many categories and costs as they want 
+Insert Data to Create Budget Unit Test
+1. Budgeter signs up
+2. Budgeter logs in
+3. Budgeter is taken to the Insert Data to Create Budget page
+4. Budgeter can enter as many categories and costs as they want
 5. Budgeter hits "create my Budget" button
 
-Forgot Username Page Unit Test 
-1. Budgeter tries to sign in 
-2. Budgeter is unsuccessful 
-3. Budgeter clicks on the Forgot username? link 
+Forgot Username Page Unit Test
+1. Budgeter tries to sign in
+2. Budgeter is unsuccessful
+3. Budgeter clicks on the Forgot username? link
 4. Budgeter enters in their email
-5. Budgeter clicks on the "Send my email" button 
+5. Budgeter clicks on the "Send my email" button
 
-Profile Setting Page Unit Test 
-1. Budgeter signs in 
-2. Budgeter is brought to home page 
-3. Budgeter clicks on the profile setting on the navigation bar 
+Profile Setting Page Unit Test
+1. Budgeter signs in
+2. Budgeter is brought to home page
+3. Budgeter clicks on the profile setting on the navigation bar
 4. Budgeter enters information about themselves
 5. Budgeter clicks on the "submit changes" button
 
@@ -48,3 +48,23 @@ Delete profile page unit test
 2.Client decided to delete profile
 3.Client click on delete profile button on the left side of the page
 4.Client see the delete profile page
+
+~~~ Expense Tracker Page ~~~
+Upload budget data file unit test
+1. Client goes to Expense Tracker Page
+2. Click "Choose File" button
+3. Select an appropriate file with .txt extension EX: budget.txt
+4. Pie Graph reflecting the budget data should be displayed
+
+Upload budget data file error message unit test
+1. Client goes to Expense Tracker Page
+2. Click "Choose File" button
+3. Select an inappropriate file without .txt extension EX: any .html file
+4. Error message "File not supported!" should be displayed
+
+Disable Choose File button after file upload unit test
+1. Client goes to Expense Tracker Page
+2. Click "Choose File" button
+3. Select an appropriate file with .txt extension EX: budget.txt
+4. "Choose File" button should be disabled
+~~~ Expense Tracker Page ~~~
