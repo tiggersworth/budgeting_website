@@ -13,67 +13,40 @@
             height: 100vh;
         }
     </style>
-
 <body>
 
 <div class='container'>
     <div class="d-flex align-items-center flex-column justify-content-center h-100 bg-dark text-white" id="header">
         <h1 class="display-4">Welcome!</h1>
-        <form>
+        <div class="alert alert-error"></div>
+        <form class="form" action="signup.html" method="post" enctype="multipart/form-data" autocomplete="off">
             <div class="form-group">
-                <input class="form-control form-control-lg" placeholder="Email Address" type="text">
+                <input class="form-control form-control-lg" id="inputEmail" placeholder="Email Address" type="text" required/>
             </div>
             <div class="form-group">
-                <input class="form-control form-control-lg" placeholder="Username" type="text">
+                <input class="form-control form-control-lg" id="inputUsername" placeholder="Username" type="text" required/>
             </div>
             <div class="form-group">
-                <input id="password" class="form-control form control-lg" id="exampleInputPassword1" placeholder="Password" type="password">
-            </div>   
-            <div class="form-group">
-                <input id="password2" class="form-control form control-lg" id="exampleInputConfirm" placeholder="Confirm Password" type="password">
+                <input type="password" class="form-control form control-lg" id="inputPassword" id="exampleInputPassword1" placeholder="Password" type="text" required/>
             </div>
-            <script>   
-    function check(){
-    var password = document.getElementById("password").value;
-    var password2 = document.getElementById("password2").value;
-    var errorMessage =document.getElementById("error");
-    var errorToThrow ="";
-    try{
-        if(password.length<8 ){
-            errorToThrow += "<br />Password needs to be at least 8 characters.";
-            
-        }
-        if(/[A-Z]/g.test(password)==false){
-            errorToThrow +="<br />Password should include at least one capital letter.";
-            
-        }
-        if(/\d/g.test(password)==false){
-            errorToThrow +="<br /> Password should include at least one digit.";
-           
-        }
-        if(/\W/g.test(password)==false){
-            errorToThrow +="<br /> Password should include at least one Non alphanumeric character.";
-           
-        }
-        if(password != password2){
-            errorToThrow +="<br /> Password should match.";
-            
-        }
-        throw errorToThrow;
-        
-    }
-    catch(err){
-        errorMessage.innerHTML = err;
-    }
-}
-</script>
             <div class="form-group">
-            <input type="button" class="btn btn-info btn-lg btn-block" value="Check password" onclick="check()">
-            </div>  
-            <div class="form-group">
-            <input type="button" class="btn btn-info btn-lg btn-block" value="Sign Up" onclick="location.href = 'login.html';">
+                <input type="password" class="form-control form control-lg" placeholder="Confirm Password" type="text" required/>
             </div>
+                <button type="button" id="submitButton" title="Save as text file">Create Account</button>
+
+            <input type="submit" value = "Continue to Log-In" name="register" class="btn btn-info btn-lg btn-block" value="Sign Up" onclick="location.href = 'login.html';"/>
         </form>
+
+        <script type="text/javascript">
+    // when document is ready
+    document.getElementById("submitButton").onclick = function() {
+        // when clicked the button
+        var content = document.getElementById('inputEmail').value + '\n' + document.getElementById('inputEmail').value + '\n' + document.getElementById('inputPassword').value
+        // a [save as] dialog will be shown
+        window.open("data:application/txt," + encodeURIComponent(content), "_self");
+    }
+        </script>
+
     </div>
 
     <!--<div class="container" id="content">-->
@@ -91,3 +64,4 @@
 </body>
 
 </html>
+?>
