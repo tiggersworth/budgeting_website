@@ -1,9 +1,12 @@
 $(document).ready(function() {
+
     $("#add").click(function() {
         var lastField = $("#buildyourform div:last");
         var intId = (lastField && lastField.length && lastField.data("idx") + 1) || 1;
         var fieldWrapper = $("<div class=\"fieldwrapper\" id=\"field" + intId + "\"/>");
         fieldWrapper.data("idx", intId);
+
+        //expense input fields
         var fDesc = $("<font size=\"3\" class=\"fieldDescription\" >Expense Type</font>");
         var fName = $("<input type=\"text\" class=\"fieldname\" />");
         var fDesc2 = $("<font size=\"3\" class=\"fieldDescription\" >Cost</font>");
@@ -13,6 +16,8 @@ $(document).ready(function() {
         removeButton.click(function() {
             $(this).parent().remove();
         });
+
+        //append to page container
         fieldWrapper.append(removeButton);
         fieldWrapper.append(fDesc);
         fieldWrapper.append(fName);
@@ -22,15 +27,18 @@ $(document).ready(function() {
         $("#buildyourform").append(fieldWrapper);
     });
 
+    //global variable to hold expense values
     var expenses;
 
     $("#display").click(function() {
+        //reset piechart and array before every display
         $("#piechart").empty();
         expenses = [['Charges', 'Percent of Budget']];
         //var fieldSet = $("<fieldset id=\"yourform\"><legend>Your Form</legend></fieldset>");
         $("#buildyourform div").each(function() {
             //var id = "input" + $(this).attr("id").replace("field","");
             //var label = $("<label for=\"" + id + "\">" + $(this).find("input.fieldname").first().val() + "</label>");
+            //retrieve every expense value pair and add to array
             var curExpense = [$(this).find("input.fieldname").first().val(), parseInt($(this).find("input.fieldcost").first().val())];
             expenses.push(curExpense);
 
@@ -51,11 +59,12 @@ $(document).ready(function() {
         });
         //$("body").append(fieldSet);
         console.log(expenses);
-        // Load google charts
+        // Load google charts from expense array
         google.charts.load('current', {'packages':['corechart']});
         google.charts.setOnLoadCallback(drawChart);
     });
 
+    //if a file is uploaded, this method is triggered
     document.getElementById('file').onchange = function(){
       var fileDisplayArea = document.getElementById('fileDisplayArea');
       var fileInput = document.getElementById('file');
