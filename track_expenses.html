@@ -40,8 +40,6 @@
     </nav>
 
       <div class="container">
-        <!-- <img src="graph.png" class="img-fluid" alt="Responsive image"> -->
-
         <h3>View your expense distribution by using one of the two options below!</h4>
 
         <div class="row">
@@ -51,36 +49,23 @@
             <h6>Only .txt files are supported (budget.txt)</h6>
 
             <input type="file" name="file" id="file">
-          </div>
 
-          <div class="col-sm">
+            <pre id="fileDisplayArea"></pre>
+            <div id="piechart"></div>
           </div>
 
           <div class="col-sm">
             <h4>Input budget values:</h4>
-            <h6>Provide only numerical values</h6>
-            <!-- <a id="addExpense">Add More Expenses</a> -->
+            <h6>Provide only numerical values for Cost</h6>
+
             <fieldset id="buildyourform">
               <legend>Expenses</legend>
             </fieldset>
             <input type="button" value="Display Graph" class="add" id="display" />
             <input type="button" value="Add an Expense" class="add" id="add" />
-
-            <div class="row">
-              <div class="col-sm">
-
-              </div>
-              <div class="col-sm">
-
-              </div>
-            </div>
           </div>
 
         </div>
-
-        <pre id="fileDisplayArea"></pre>
-        <div id="piechart"></div>
-
         </div>
 
       <!-- Optional JavaScript -->
