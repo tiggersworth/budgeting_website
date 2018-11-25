@@ -1,67 +1,116 @@
-var expenses = [['Charges', 'Percent of Budget']];
+$(document).ready(function() {
+    $("#add").click(function() {
+        var lastField = $("#buildyourform div:last");
+        var intId = (lastField && lastField.length && lastField.data("idx") + 1) || 1;
+        var fieldWrapper = $("<div class=\"fieldwrapper\" id=\"field" + intId + "\"/>");
+        fieldWrapper.data("idx", intId);
+        var fDesc = $("<font size=\"3\" class=\"fieldDescription\" >Expense Type</font>");
+        var fName = $("<input type=\"text\" class=\"fieldname\" />");
+        var fDesc2 = $("<font size=\"3\" class=\"fieldDescription\" >Cost</font>");
+        var fValue = $("<input type=\"text\" class=\"fieldname\" />");
+        //var fType = $("<select class=\"fieldtype\"><option value=\"checkbox\">Checked</option><option value=\"textbox\">Text</option><option value=\"textarea\">Paragraph</option></select>");
+        var removeButton = $("<input type=\"button\" class=\"remove\" value=\"-\" />");
+        removeButton.click(function() {
+            $(this).parent().remove();
+        });
+        fieldWrapper.append(removeButton);
+        fieldWrapper.append(fDesc);
+        fieldWrapper.append(fName);
+        //fieldWrapper.append(fType);
+        fieldWrapper.append(fDesc2);
+        fieldWrapper.append(fValue);
+        $("#buildyourform").append(fieldWrapper);
+    });
 
-document.getElementById('file').onchange = function(){
-  var fileDisplayArea = document.getElementById('fileDisplayArea');
-  var fileInput = document.getElementById('file');
+    $("#preview").click(function() {
+        $("#yourform").remove();
+        var fieldSet = $("<fieldset id=\"yourform\"><legend>Your Form</legend></fieldset>");
+        $("#buildyourform div").each(function() {
+            var id = "input" + $(this).attr("id").replace("field","");
+            var label = $("<label for=\"" + id + "\">" + $(this).find("input.fieldname").first().val() + "</label>");
+            var input;
+            switch ($(this).find("select.fieldtype").first().val()) {
+                case "checkbox":
+                    input = $("<input type=\"checkbox\" id=\"" + id + "\" name=\"" + id + "\" />");
+                    break;
+                case "textbox":
+                    input = $("<input type=\"text\" id=\"" + id + "\" name=\"" + id + "\" />");
+                    break;
+                case "textarea":
+                    input = $("<textarea id=\"" + id + "\" name=\"" + id + "\" ></textarea>");
+                    break;
+            }
+            fieldSet.append(label);
+            fieldSet.append(input);
+        });
+        $("body").append(fieldSet);
+    });
 
-  var file = this.files[0];
-  var textType = /text.plain/; //.* means everything so changed to .plain
-  console.log(file.type);
+    var expenses = [['Charges', 'Percent of Budget']];
 
-  if (file.type.match(textType)) {
-    var reader = new FileReader();
-    reader.onload = function(progressEvent){
-      // Entire file
-      //console.log(this.result);
+    document.getElementById('file').onchange = function(){
+      var fileDisplayArea = document.getElementById('fileDisplayArea');
+      var fileInput = document.getElementById('file');
 
-      // By lines
-      var lines = this.result.split('\n');
-      for(var line = 0; line < lines.length; line++){
-        ///console.log();
-        var data = lines[line];
+      var file = this.files[0];
+      var textType = /text.plain/; //.* means everything so changed to .plain
+      console.log(file.type);
 
-        if(data !== null && data !== '') {
-          var category_price = data.split(' ');
-          console.log(category_price[1]);
+      if (file.type.match(textType)) {
+        var reader = new FileReader();
+        reader.onload = function(progressEvent){
+          // Entire file
+          //console.log(this.result);
 
-          var price = parseInt(category_price[1]);
-          category_price[1] = price;
-          expenses.push(category_price);
+          // By lines
+          var lines = this.result.split('\n');
+          for(var line = 0; line < lines.length; line++){
+            ///console.log();
+            var data = lines[line];
+
+            if(data !== null && data !== '') {
+              var category_price = data.split(' ');
+              console.log(category_price[1]);
+
+              var price = parseInt(category_price[1]);
+              category_price[1] = price;
+              expenses.push(category_price);
+            }
+          }
+
+          //console.log(expenses);
+        };
+        reader.readAsText(file);
+
+        // Load google charts
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        // Draw the chart and set the chart values
+        function drawChart() {
+          var data = google.visualization.arrayToDataTable(expenses);/*[
+            ['Charges', 'Percent of Budget'],
+            ['Rent', 25],
+            ['Food', 15],
+            ['Gas', 5],
+            ['Phone Bill', 5],
+            ['Electric', 5],
+            ['Remaining', 45]
+          ] */
+
+          // Optional; add a title and set the width and height of the chart
+          var options = {'title':'Your Budget Summary', 'width':825, 'height':600};
+
+          // Display the chart inside the <div> element with id="piechart"
+          var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+          chart.draw(data, options);
         }
+
+        fileInput.disabled = true;
+        fileDisplayArea.innerText = "";
+      } else {
+        fileDisplayArea.innerText = "File not supported!";
       }
 
-      //console.log(expenses);
     };
-    reader.readAsText(file);
-
-    // Load google charts
-    google.charts.load('current', {'packages':['corechart']});
-    google.charts.setOnLoadCallback(drawChart);
-
-    // Draw the chart and set the chart values
-    function drawChart() {
-      var data = google.visualization.arrayToDataTable(expenses);/*[
-        ['Charges', 'Percent of Budget'],
-        ['Rent', 25],
-        ['Food', 15],
-        ['Gas', 5],
-        ['Phone Bill', 5],
-        ['Electric', 5],
-        ['Remaining', 45]
-      ] */
-
-      // Optional; add a title and set the width and height of the chart
-      var options = {'title':'Your Budget Summary', 'width':825, 'height':600};
-
-      // Display the chart inside the <div> element with id="piechart"
-      var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-      chart.draw(data, options);
-    }
-
-    fileInput.disabled = true;
-    fileDisplayArea.innerText = "";
-  } else {
-    fileDisplayArea.innerText = "File not supported!";
-  }
-
-};
+});

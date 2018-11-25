@@ -41,10 +41,41 @@
 
       <div class="container">
         <!-- <img src="graph.png" class="img-fluid" alt="Responsive image"> -->
-        <h4>Import budget:</h4>
-        <h6>Only .txt files are supported (budget.txt)</h6>
 
-        <input type="file" name="file" id="file">
+        <h3>View your expense distribution by using one of the two options below!</h4>
+
+        <div class="row">
+
+          <div class="col-sm">
+            <h4>Import budget:</h4>
+            <h6>Only .txt files are supported (budget.txt)</h6>
+
+            <input type="file" name="file" id="file">
+          </div>
+
+          <div class="col-sm">
+          </div>
+
+          <div class="col-sm">
+            <h4>Input budget values:</h4>
+            <h6>Provide only numerical values</h6>
+            <!-- <a id="addExpense">Add More Expenses</a> -->
+            <fieldset id="buildyourform">
+              <legend>Expenses</legend>
+            </fieldset>
+            <!-- <input type="button" value="Preview form" class="add" id="preview" /> -->
+            <input type="button" value="Add an Expense" class="add" id="add" />
+            <div class="row">
+              <div class="col-sm">
+
+              </div>
+              <div class="col-sm">
+
+              </div>
+            </div>
+          </div>
+
+        </div>
 
         <pre id="fileDisplayArea"></pre>
         <div id="piechart"></div>
