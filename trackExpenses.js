@@ -38,27 +38,11 @@ $(document).ready(function() {
         $("#buildyourform div").each(function() {
             //var id = "input" + $(this).attr("id").replace("field","");
             //var label = $("<label for=\"" + id + "\">" + $(this).find("input.fieldname").first().val() + "</label>");
+
             //retrieve every expense value pair and add to array
             var curExpense = [$(this).find("input.fieldname").first().val(), parseInt($(this).find("input.fieldcost").first().val())];
             expenses.push(curExpense);
-
-            /*var input;
-            switch ($(this).find("select.fieldtype").first().val()) {
-                case "checkbox":
-                    input = $("<input type=\"checkbox\" id=\"" + id + "\" name=\"" + id + "\" />");
-                    break;
-                case "textbox":
-                    input = $("<input type=\"text\" id=\"" + id + "\" name=\"" + id + "\" />");
-                    break;
-                case "textarea":
-                    input = $("<textarea id=\"" + id + "\" name=\"" + id + "\" ></textarea>");
-                    break;
-            } */
-            //fieldSet.append(label);
-            //fieldSet.append(input);
         });
-        //$("body").append(fieldSet);
-        console.log(expenses);
         // Load google charts from expense array
         google.charts.load('current', {'packages':['corechart']});
         google.charts.setOnLoadCallback(drawChart);
@@ -79,26 +63,21 @@ $(document).ready(function() {
         expenses = [['Charges', 'Percent of Budget']];
 
         reader.onload = function(progressEvent){
-          // Entire file
-          //console.log(this.result);
+          // Entire file console.log(this.result);
 
           // By lines
           var lines = this.result.split('\n');
           for(var line = 0; line < lines.length; line++){
-            ///console.log();
             var data = lines[line];
 
             if(data !== null && data !== '') {
               var category_price = data.split(' ');
-              //console.log(category_price[1]);
 
               var price = parseInt(category_price[1]);
               category_price[1] = price;
               expenses.push(category_price);
             }
           }
-
-          console.log(expenses);
         };
         reader.readAsText(file);
 
@@ -111,7 +90,6 @@ $(document).ready(function() {
       } else {
         fileDisplayArea.innerText = "File not supported!";
       }
-
     };
 
     // Draw the chart and set the chart values
