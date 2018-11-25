@@ -9,7 +9,7 @@
 }
 
 .col-sm {
-  
+
 }
 
 fieldset
@@ -30,6 +30,13 @@ input.add
     float:right;
 }
 input.fieldname
+{
+
+    clear:left;
+    display:block;
+    margin:5px;
+}
+input.fieldcost
 {
 
     clear:left;
