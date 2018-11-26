@@ -52,11 +52,30 @@
 <body>
 <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-header">
 
+<!-- Nav Styling -->
+<!-- <style>
+.demo-layout-transparent {
+  background: url('../assets/demos/transparent.jpg') center / cover;
+}
+.demo-layout-transparent .mdl-layout__header,
+.demo-layout-transparent .mdl-layout__drawer-button {
+  /* This background is dark, so we set text to white. Use 87% black instead if
+     your background is light. */
+  color: white;
+}
+</style> -->
+
+
   <!-- Header section containing logo -->
   <header class="mdl-layout__header mdl-color-text--white mdl-color--light-blue-700">
     <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-grid">
       <div class="mdl-layout__header-row mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
-        <h3><i class="material-icons">chat_bubble_outline</i> Friendly Chat</h3>
+        <h3><i class="material-icons">chat_bubble_outline</i> Budget Bud</h3>
+        <nav class="mdl-navigation">
+          <a class="mdl-navigation__link" href="">Expense Tracker</a>
+          <a class="mdl-navigation__link" href="">Budget Calculator</a>
+          <a class="mdl-navigation__link" href="">Profile.html</a>
+        </nav>
       </div>
       <div id="user-container">
         <div hidden id="user-pic"></div>
@@ -71,11 +90,11 @@
     </div>
   </header>
 
-  <main class="mdl-layout__content mdl-color--grey-100">
-    <div id="messages-card-container" class="mdl-cell mdl-cell--12-col mdl-grid">
+  <!-- <main class="mdl-layout__content mdl-color--grey-100">
+    <div id="messages-card-container" class="mdl-cell mdl-cell--12-col mdl-grid"> -->
 
       <!-- Messages container -->
-      <div id="messages-card" class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--6-col-tablet mdl-cell--6-col-desktop">
+      <!-- <div id="messages-card" class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--6-col-tablet mdl-cell--6-col-desktop">
         <div class="mdl-card__supporting-text mdl-color-text--grey-600">
           <div id="messages">
             <span id="message-filler"></span>
@@ -96,7 +115,7 @@
             </button>
           </form>
         </div>
-      </div>
+      </div> -->
 
       <div id="must-signin-snackbar" class="mdl-js-snackbar mdl-snackbar">
         <div class="mdl-snackbar__text"></div>
