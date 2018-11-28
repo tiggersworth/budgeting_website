@@ -105,7 +105,7 @@ $(document).ready(function() {
       ] */
 
       // Optional; add a title and set the width and height of the chart
-      var options = {'title':'Your Budget Summary', 'width':825, 'height':600};
+      var options = {'title':'Your Budget Summary', 'width':625, 'height':450};
 
       // Display the chart inside the <div> element with id="piechart"
       var chart = new google.visualization.PieChart(document.getElementById('piechart'));

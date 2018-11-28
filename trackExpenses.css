@@ -1,6 +1,6 @@
 #piechart{
-  margin-left:auto;
-	margin-right:auto;
+  margin-left:300px;
+	margin-right:300px;
 }
 
 .container {
@@ -67,4 +67,9 @@ input.remove
     float:left;
     display:block;
     margin:5px;
+}
+
+#barchartcontainer
+{
+  border: solid 1px #000;
 }

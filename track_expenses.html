@@ -38,8 +38,8 @@
         </div>
     </nav>
 
-      <div class="container">
-        <h3>View your expense distribution by using one of the two options below!</h4>
+      <div class="container" id="barchartcontainer">
+        <h2 class="text-center">View your Daily Expense Distribution</h2>
 
         <div class="row">
 
@@ -50,7 +50,6 @@
             <input type="file" name="file" id="file">
 
             <pre id="fileDisplayArea"></pre>
-            <div id="piechart"></div>
           </div>
 
           <div class="col-sm">
@@ -65,11 +64,24 @@
           </div>
 
         </div>
+
+        <div id="piechart"></div>
         </div>
 
-        <!-- html bar graph tags -->
-        <div id="weekbarchart_material" style="width: 900px; height: 500px;"></div>
-        <div id="monthbarchart_material" style="width: 900px; height: 500px;"></div>
+        <div class="container" id="barchartcontainer">
+          <h2 class="text-center">Cash Flow Breakdown</h2>
+
+          <div class="row">
+            <div class="col-sm">
+              <!-- original = 900x500 -->
+              <div id="weekbarchart_material" style="width: 525px; height: 325px;"></div>
+            </div>
+            <div class="col-sm">
+              <div id="monthbarchart_material" style="width: 525px; height: 325px;"></div>
+            </div>
+          </div>
+
+        </div>
 
       <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
