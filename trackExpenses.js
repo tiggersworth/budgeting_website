@@ -29,6 +29,7 @@ $(document).ready(function() {
 
     //global variable to hold expense values
     var expenses;
+    var budget = 250;
 
     $("#display").click(function() {
         //reset piechart and array before every display
@@ -64,7 +65,7 @@ $(document).ready(function() {
 
         reader.onload = function(progressEvent){
           // Entire file console.log(this.result);
-
+          var totalSpent = 0;
           // By lines
           var lines = this.result.split('\n');
           for(var line = 0; line < lines.length; line++){
@@ -76,8 +77,13 @@ $(document).ready(function() {
               var price = parseInt(category_price[1]);
               category_price[1] = price;
               expenses.push(category_price);
+              totalSpent += price;
             }
           }
+          var remain = budget - totalSpent;
+          expenses.push(['Remaining', remain]);
+
+          displayWeeklyBudgetValues(budget, remain);
         };
         reader.readAsText(file);
 
@@ -170,5 +176,12 @@ $(document).ready(function() {
       var chart = new google.charts.Bar(document.getElementById('monthbarchart_material'));
 
       chart.draw(data, google.charts.Bar.convertOptions(options));
+    }
+
+    function displayWeeklyBudgetValues(starting, remaining) {
+      var start = $("<font size=\"3\" class=\"budgetDescription\" >Starting Weekly Budget: <b>" + starting + "</b></font>");
+      var remain = $("<font size=\"3\" class=\"budgetDescription2\" >Remaining Budget: <b>" + remaining + "</b></font>");
+      $("#piechartcontainer").append(start);
+      $("#piechartcontainer").append(remain);
     }
 });

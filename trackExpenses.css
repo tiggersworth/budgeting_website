@@ -1,5 +1,5 @@
 #piechart{
-  margin-left:300px;
+  margin-left:100px;
 	margin-right:300px;
 }
 
@@ -72,4 +72,19 @@ input.remove
 #barchartcontainer
 {
   border: solid 1px #000;
+}
+
+#piechartcontainer
+{
+  border: solid 1px #000;
+}
+
+.budgetDescription {
+  position: absolute;
+  bottom: 50px;
+}
+
+.budgetDescription2 {
+  position: absolute;
+  bottom: 0px;
 }

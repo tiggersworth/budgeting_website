@@ -3,4 +3,3 @@ Food 15
 Gas 5
 Phone 5
 Electric 5
-Remaining 45
