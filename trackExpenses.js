@@ -36,6 +36,7 @@ $(document).ready(function() {
         $("#piechart").empty();
         expenses = [['Charges', 'Percent of Budget']];
         //var fieldSet = $("<fieldset id=\"yourform\"><legend>Your Form</legend></fieldset>");
+        var totalSpent = 0;
         $("#buildyourform div").each(function() {
             //var id = "input" + $(this).attr("id").replace("field","");
             //var label = $("<label for=\"" + id + "\">" + $(this).find("input.fieldname").first().val() + "</label>");
@@ -43,10 +44,18 @@ $(document).ready(function() {
             //retrieve every expense value pair and add to array
             var curExpense = [$(this).find("input.fieldname").first().val(), parseInt($(this).find("input.fieldcost").first().val())];
             expenses.push(curExpense);
+
+            totalSpent += parseInt($(this).find("input.fieldcost").first().val());
         });
+        var remain = budget - totalSpent;
+        expenses.push(['Remaining', remain]);
+        displayWeeklyBudgetValues(budget, remain);
+
         // Load google charts from expense array
         google.charts.load('current', {'packages':['corechart']});
         google.charts.setOnLoadCallback(drawChart);
+
+        document.getElementById('file').disabled = true;
     });
 
     //if a file is uploaded, this method is triggered
@@ -111,7 +120,7 @@ $(document).ready(function() {
       ] */
 
       // Optional; add a title and set the width and height of the chart
-      var options = {'title':'Your Budget Summary', 'width':625, 'height':450};
+      var options = {'title':'Your Budget Summary', 'width':625, 'height':350, is3D: true};
 
       // Display the chart inside the <div> element with id="piechart"
       var chart = new google.visualization.PieChart(document.getElementById('piechart'));
@@ -179,8 +188,11 @@ $(document).ready(function() {
     }
 
     function displayWeeklyBudgetValues(starting, remaining) {
-      var start = $("<font size=\"3\" class=\"budgetDescription\" >Starting Weekly Budget: <b>" + starting + "</b></font>");
-      var remain = $("<font size=\"3\" class=\"budgetDescription2\" >Remaining Budget: <b>" + remaining + "</b></font>");
+        $("#bd1").remove();
+        $("#bd2").remove();
+
+      var start = $("<font size=\"3\" id=\"bd1\" class=\"budgetDescription\" >Starting Weekly Budget: <b>" + starting + "</b></font>");
+      var remain = $("<font size=\"3\" id=\"bd2\" class=\"budgetDescription2\" >Remaining Budget: <b>" + remaining + "</b></font>");
       $("#piechartcontainer").append(start);
       $("#piechartcontainer").append(remain);
     }

@@ -1,6 +1,5 @@
 #piechart{
-  margin-left:100px;
-	margin-right:300px;
+  margin-left:300px;
 }
 
 .container {
@@ -81,10 +80,10 @@ input.remove
 
 .budgetDescription {
   position: absolute;
-  bottom: 50px;
+  top: 400px;
 }
 
 .budgetDescription2 {
   position: absolute;
-  bottom: 0px;
+  top: 450px;
 }
