@@ -111,4 +111,64 @@ $(document).ready(function() {
       var chart = new google.visualization.PieChart(document.getElementById('piechart'));
       chart.draw(data, options);
     }
+
+    //weekly bar chart load and draw methods
+    google.charts.load('current', {'packages':['bar']});
+    google.charts.setOnLoadCallback(drawWeekChart);
+
+    function drawWeekChart() {
+      var data = google.visualization.arrayToDataTable([
+        ['Week', 'Budget', 'Expenses', 'Remaining'],
+        ['Week 1', 250, 50, 200],
+        ['Week 2', 250, 0, 250],
+        ['Week 3', 250, 125, 125],
+        ['Week 4', 250, 175, 75]
+      ]);
+
+      var options = {
+        chart: {
+          title: 'Weekly',
+          subtitle: 'Budget, Expenses, and Remaining Amount',
+        },
+        bars: 'horizontal' // Required for Material Bar Charts.
+      };
+
+      var chart = new google.charts.Bar(document.getElementById('weekbarchart_material'));
+
+      chart.draw(data, google.charts.Bar.convertOptions(options));
+    }
+
+    //monthly bar chart load and draw methods
+    google.charts.load('current', {'packages':['bar']});
+    google.charts.setOnLoadCallback(drawMonthChart);
+
+    function drawMonthChart() {
+      var data = google.visualization.arrayToDataTable([
+        ['Month', 'Budget', 'Expenses', 'Remaining'],
+        ['January', 1000, 400, 600],
+        ['February', 1000, 460, 540],
+        ['March', 1000, 1120, 0],
+        ['April', 1000, 540, 460],
+        ['May', 1000, 640, 360],
+        ['June', 1000, 740, 260],
+        ['July', 1000, 840, 160],
+        ['August', 1000, 300, 700],
+        ['September', 1000, 450, 550],
+        ['October', 1000, 220, 780],
+        ['November', 1000, 330, 670],
+        ['December', 1000, 560, 440]
+      ]);
+
+      var options = {
+        chart: {
+          title: 'Monthly',
+          subtitle: 'Budget, Expenses, and Remaining Amount',
+        },
+        bars: 'horizontal' // Required for Material Bar Charts.
+      };
+
+      var chart = new google.charts.Bar(document.getElementById('monthbarchart_material'));
+
+      chart.draw(data, google.charts.Bar.convertOptions(options));
+    }
 });
