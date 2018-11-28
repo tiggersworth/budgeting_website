@@ -1,0 +1,76 @@
+body{
+    font: Arial, Helvetica, sans-serif;
+}
+
+#container{
+    width: 1050px;
+/*    border: 1px solid grey;*/
+    margin: 0 auto;
+}
+
+#header{
+    height: 100px;
+    padding: 10px 0;
+}
+
+
+#brand{
+    float: left;
+}
+
+
+.clear{
+    clear:both;
+}
+#menu{
+    height: 70px;
+    background: linear-gradient(#F8F594,#D5D533);
+    background: -webkit-linear-gradient(#F8F594,#D5D533);
+    background: -moz-linear-gradient(#F8F594,#D5D533);
+    background: -o-linear-gradient(#F8F594,#D5D533);
+    padding:7px 0;
+}
+ul{
+    list-style:none;
+}
+
+#menu ul li{
+    float: left;
+    padding: 0 30px;
+    height: 30px;
+    border-right: 1px solid #5D12E7;
+}
+#menu ul li:last-child{
+    border-right:none;
+}
+#menu ul li a{
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 17px;
+    color:#5D12E7;
+    line-height: 30px;
+    
+    -ms-transition: font-size 0.2s ease;
+    -webkit-transition: font-size 0.2s ease;
+    -moz-transition: font-size 0.2s ease;
+    -o-transition: font-size 0.2s ease;
+    transition: font-size 0.2s ease;
+    
+    
+}
+
+#menu ul li a:hover, #menu ul li a.active{
+    font-size: 20px;
+    font-weight: bold;
+    color:#B314DB;
+}
+
+.footer{
+    height: 60px;
+    background: linear-gradient(#F6F390, #D5D533);
+    background: -moz-linear-gradient(#F6F390, #D5D533);
+    background: -o-linear-gradient(#F6F390, #D5D533);
+    background: -webkit-linear-gradient(#F6F390, #D5D533);
+    padding: 20px 30px;
+    margin-top: 30px;
+}
