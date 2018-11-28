@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<link type = "text/css" rel = "stylesheet" href = "usersettings.css" media = "screen,print"/>
+		<link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<!--<script src = "usersettings.js"</script>-->
+		<link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script>
+		function myfunction(){
+			var firstname = "Frederick";
+			var lastname = "Ho";
+			var streetaddress = "111 Hudson street"
+			var cityaddress = "New York"
+			var stateaddress = "NY"
+			document.getElementById("firstname").innerHTML = firstname;
+			document.getElementById("lastname").innerHTML = lastname;
+			document.getElementById("address").innerHTML = streetaddress;
+			document.getElementById("city").innerHTML = cityaddress;
+			document.getElementById("state").innerHTML = stateaddress;
+		}
+		</script>
+		<script>
+		function changefunction(inputid, infoid){
+			var input = document.getElementById(inputid).value;
+			document.getElementById(infoid).innerHTML = input;
+			document.getElementById(inputid).value = '';
+			
+		}
+		</script>
+	</head>
+	<body onload = "myfunction()">
+	
+		<div class = "profile">
+			<div id = "header">
+				<p>Profile</p>
+			</div>
+			<div class = "sectionheaders"> <!-- like name, address, city, etc-->
+					<div class = "titles">First name:</div>
+					<div class = "titles" id = "firstname"></div>
+					<input type = "button" class = "titles" value = "Edit!" onclick = "changefunction('firstnameinput','firstname');">
+					<form class = "titles" onsubmit = "return false;">
+						<input type = "text" id = "firstnameinput">
+					</form>
+			</div>
+			
+			<div class = "sectionheaders"> <!-- like name, address, city, etc-->
+					<div class = "titles">Last name:</div>
+					<div class = "titles" id = "lastname"></div>
+					<input type = "button" class = "titles" value = "Edit!" onclick = "changefunction('lastnameinput','lastname');">
+					<form class = "titles" onsubmit = "return false;">
+						<input type = "text" id = "lastnameinput">
+					</form>
+			</div>
+			
+			<div class = "sectionheaders"> <!-- like name, address, city, etc-->
+					<div class = "titles">Address:</div>
+					<div class = "titles" id = "address"></div>
+					<input type = "button" class = "titles" value = "Edit!" onclick = "changefunction('addressinput','address');">
+					<form class = "titles" onsubmit = "return false;">
+						<input type = "text" id = "addressinput">
+					</form>
+			</div>
+			
+			<div class = "sectionheaders"> <!-- like name, address, city, etc-->
+					<div class = "titles">City:</div>
+					<div class = "titles" id = "city"></div>
+					<input type = "button" class = "titles" value = "Edit!" onclick = "changefunction('cityinput','city');">
+					<form class = "titles" onsubmit = "return false;">
+						<input type = "text" id = "cityinput">
+					</form>
+			</div>
+			
+			<div class = "sectionheaders"> <!-- like name, address, city, etc-->
+					<div class = "titles">State:</div>
+					<div class = "titles" id = "state"></div>
+					<input type = "button" class = "titles" value = "Edit!" onclick = "changefunction('stateinput','state');">
+					<form class = "titles" onsubmit = "return false;">
+						<input type = "text" id = "stateinput">
+					</form>
+			</div>
+		</div>
+	</body>
+</html>
