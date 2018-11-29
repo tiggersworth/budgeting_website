@@ -5,6 +5,13 @@ document.addEventListener("DOMContentLoaded", event => {
 
 });
 
+var db = firebase.firestore();
+
+db.settings({
+  timestampsInSnapshots: true
+});
+
+
 // function initFirebaseAuth() {
 //   // Listen to auth state changes.
 //   firebase.auth().onAuthStateChanged(authStateObserver);
@@ -46,14 +53,58 @@ function setProfile() {
 // });
 // }
 
-function getUserName() {
-  return firebase.auth().currentUser.displayName;
+// function pushUserUID() {
+//   db.collection("users").doc(getUserUID()).set({
+//     first: "uda",
+//     last: "lovelace",
+//     born: 2000
+// })
+// .then(function(docRef) {
+//     console.log("Document written with ID: ", docRef.id);
+// })
+// .catch(function(error) {
+//     console.error("Error adding document: ", error);
+// });
+// }
+
+
+function getUserUID() {
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      var userid = user.uid;
+      var stringv = String(userid); //stringv holds string version of user.uid
+      //console.log("userid",stringv);
+      db.collection("users").doc(stringv).set({
+        rent: 0,
+        electric: 0,
+        food: 0,
+        gas: 0
+      })
+      return user.uid;
+    }
+  });
 }
 
+function getUserName() {
+  return firebase.auth().currentUser.displayName;
+};
+
+function pushUserUID() {
+  db.collection("users").doc(stringv).set({
+})
+.then(function(docRef) {
+    console.log("Document written with ID: ", docRef.id);
+})
+.catch(function(error) {
+    console.error("Error adding document: ", error);
+});
+}
 // initFirebaseAuth();
 checkSetup();
 setProfile();
+getUserUID();
+//pushUserUID();
 // welcomeUser();
 
 // Shortcuts to DOM Elements.
-var welcomeMessage = document.getElementById('welcome_message');
+// var welcomeMessage = document.getElementById('welcome_message');
