@@ -33,14 +33,20 @@
         <script defer src="/__/firebase/init.js"></script>
         <!-- App Styling -->
         <link rel="stylesheet" href="main.css">
+    
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/one-page-wonder.min.css" rel="stylesheet">
 </head>
 
 
 <body>
-
-  <div id = "welcome_message">
-     <h1 class="display-3 text-center my-4">Welcome Budgeter</h1>
-  </div>
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -53,7 +59,6 @@
       // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
       //
       // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-
       try {
         let app = firebase.app();
         let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');
@@ -63,30 +68,102 @@
     });
   </script>
 
-    <nav class="navbar navbar-expand-sm navbar-light bg-light mb-3">
-        <div class="container">
-            <a class="navbar-brand" href="#"></a>
-            <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="track_expenses.html">Expense Tracker</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="budget_calculator.html">Budget Calculator</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="profile.html">Profile</a>
-                    </li>
-                </ul>
-            </div>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="home_page.html">Start Budgeting</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="login.html">Log In</a>
+            </li>
+          </ul>
         </div>
+      </div>
     </nav>
-    <script src="app.js"></script>
+        <header class="masthead text-center text-white">
+      <div class="masthead-content">
+        <div class="container">
+          <h1 class="masthead-heading mb-0">Budget Bud</h1>
+          <h2 class="masthead-subheading mb-0">An Easy Way To Start Saving!</h2>
+        </div>
+      </div>
+      <div class="bg-circle-1 bg-circle"></div>
+      <div class="bg-circle-2 bg-circle"></div>
+      <div class="bg-circle-3 bg-circle"></div>
+      <div class="bg-circle-4 bg-circle"></div>
+    </header>
+
+    <section>
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6 order-lg-2">
+            <div class="p-5">
+              <img class="img-fluid rounded-circle" src="img/expense_tracker.png" alt="">
+            </div>
+          </div>
+          <div class="col-lg-6 order-lg-1">
+            <div class="p-5">
+                <a href="track_expenses.html" class="btn btn-primary btn-xl rounded-pill mt-5">Budget Tracker</a>
+              <p>Don't remember where the money GOES? Let us help you TRACK DOWN your expense!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6">
+            <div class="p-5">
+              <img class="img-fluid rounded-circle" src="img/calculator.png" alt="">
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="p-5">
+              <a href="budget_calculator.html" class="btn btn-primary btn-xl rounded-pill mt-5">Budget Calculator</a>
+              <p>Don't know how to spend money accordingly? let us help you break down your expense in detail!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6 order-lg-2">
+            <div class="p-5">
+              <img class="img-fluid rounded-circle" src="img/fico.png" alt="">
+            </div>
+          </div>
+          <div class="col-lg-6 order-lg-1">
+            <div class="p-5">
+              <a href="fico.html" class="btn btn-primary btn-xl rounded-pill mt-5">FICO Score</a>
+              <p>What FICO Score Is Considered Good Credit? Let us help you understand EVERY THING about FICO score!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-5 bg-black">
+      <div class="container">
+        <p class="m-0 text-center text-white small">Copyright &copy; Budget Bud 2018</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-firestore.js"></script>
+    
+    <script src="app.js"></script>
     </body>
 </html>
