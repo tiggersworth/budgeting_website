@@ -1,0 +1,140 @@
+Give Feedback HTML Skeleton Unit Test
+1. Client signs up/logs in
+2. Client clicks Give Feedback tab on home page
+3. Client is taken to give feedback page
+4. Client can enter text/feedback in comment box
+5. Client can click submit
+6. Popup saying "submission rececived" appears to confirm submission
+
+Display Articles Unit Test
+1. Client signs up/logs in
+2. Client lands on home page
+3. Client sees list of articles to the left of home page
+4. Client can scroll down the box containing different articles
+5. Client can click on links
+6. Client is directed to different articles depending on which link was clicked
+
+Insert Data to Create Budget Unit Test
+1. Budgeter signs up
+2. Budgeter logs in
+3. Budgeter is taken to the Insert Data to Create Budget page
+4. Budgeter can enter as many categories and costs as they want
+5. Budgeter hits "create my Budget" button
+
+Forgot Username Page Unit Test
+1. Budgeter tries to sign in
+2. Budgeter is unsuccessful
+3. Budgeter clicks on the Forgot username? link
+4. Budgeter enters in their email
+5. Budgeter clicks on the "Send my email" button
+
+Profile Setting Page Unit Test
+1. Budgeter signs in
+2. Budgeter is brought to home page
+3. Budgeter clicks on the profile setting on the navigation bar
+4. Budgeter enters information about themselves
+5. Budgeter clicks on the "submit changes" button
+
+Password Credential Unit test
+1.Client type password
+2.if the password is less than 8 digits, warning shows on top of the website
+2.if the password does not contain Big letter, warning shows on top of the website
+3.if the password does not contain numerical characters, warning shows on top of the website
+4.if the password does not contain special characters, warning shows on top of the website
+5. If the retype does not match the original password, warning shows on top of the website
+
+Delete profile page unit test
+1.Client currently on profile setting page
+2.Client decided to delete profile
+3.Client click on delete profile button on the left side of the page
+4.Client see the delete profile page
+
+~~~ Expense Tracker Page ~~~
+Upload budget data file unit test
+1. Client goes to Expense Tracker Page
+2. Click "Choose File" button
+3. Select an appropriate file with .txt extension EX: budget.txt
+4. Pie Graph reflecting the budget data should be displayed
+
+Upload budget data file error message unit test
+1. Client goes to Expense Tracker Page
+2. Click "Choose File" button
+3. Select an inappropriate file without .txt extension EX: any .html file
+4. Error message "File not supported!" should be displayed
+
+Disable Choose File button after file upload unit test
+1. Client goes to Expense Tracker Page
+2. Click "Choose File" button
+3. Select an appropriate file with .txt extension EX: budget.txt
+4. "Choose File" button should be disabled
+~~~ Expense Tracker Page ~~~
+
+~~~ Sign up (txt file) ~~~
+
+Create and link button to reading the Text File function
+Task Tests:
+1.) Sign in.
+2.) Fill out forms.
+3.) Load file.
+4.) Loading file should read the file out. Print to console.
+
+Continue to login button
+1.) Click sign up.
+2.) Fill out forms.
+3.) Download data.
+4.) Clicking continue to log in should redirect to log in page
+
+Choose file button
+1.) Click log in.
+2.) Fill out forms.
+3.) Clicking load file should prompt you to load a file.
+
+Read from txt database
+1.) Click sign in
+2.) Fill out forms for the sign up.
+3.) Should read and create variables in console
+
+Show textfile chosen
+1.) Click login.
+2.) Fill out forms.
+3.) Load a file.
+4.) File loaded should show the file name.
+5.) File loaded should match file shown on page next to load file button.
+
+Validate credentials from textfile
+1.) Go to log in,
+2.) Input forms.
+3.) load the file for the desired client.
+4.) click log in.
+5.) Should be on the homepage.
+
+Display incorrect alert when login credentials are wrong
+1.) Go to log in page.
+2.) fill out log in forms. (password incorrectly AND user incorrectly)
+3.) load user file.
+4.) try to log in with incorrect forms.
+5.) alert should pop up.
+
+Download Database
+Task Test:
+1.) Click sign up.
+2.) Create an account.
+3.) Fill out forms.
+4.) Client will be prompted to download data. Download data into user data folder.
+
+Write user sign up details to text files
+1.) Check for file in userTextfiles for "usernameGoesHere.txt".
+2.) Should have three fields separated by lines.
+3.) First line should be email, followed by username and finally password.
+
+Create Dummy User locally
+1.) Look in folder for user dummy.txt
+2.) Dummy.txt should have 3 strings
+3.) First one is email.
+4.) 2nd one is username.
+5.) 3rd one is password.
+
+~~~ Sign up ~~~
+
+
+
