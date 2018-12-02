@@ -1,9 +1,120 @@
 #piechart{
-  margin-left:auto;
-	margin-right:auto;
+  margin-left:300px;
 }
 
 .container {
   margin-left:auto;
 	margin-right:auto;
+}
+
+.col-sm {
+
+}
+
+fieldset
+{
+    border: solid 1px #000;
+    padding:10px;
+    display:block;
+    clear:both;
+    margin:5px 0px;
+}
+legend
+{
+    padding:0px 10px;
+    color:#FFF;
+}
+input.add
+{
+    float:right;
+}
+input.fieldname
+{
+
+    clear:left;
+    display:block;
+    margin:5px;
+}
+input.fieldcost
+{
+
+    clear:left;
+    display:block;
+    margin:5px;
+}
+select.fieldtype
+{
+    float:left;
+    display:block;
+    margin:5px;
+}
+input.remove
+{
+    float:left;
+    display:block;
+    margin:5px;
+}
+#yourform label
+{
+    float:left;
+    clear:left;
+    display:block;
+    margin:5px;
+}
+#yourform input, #yourform textarea
+{
+    float:left;
+    display:block;
+    margin:5px;
+}
+
+.alert {
+    padding: 20px;
+    color: white;
+    opacity: 1;
+    transition: opacity 0.6s;
+    margin-bottom: 15px;
+
+    margin-left:auto;
+  	margin-right:auto;
+    width: 50%
+}
+
+.alert.success {background-color: #4CAF50;}
+.alert.info {background-color: #2196F3;}
+.alert.warning {background-color: #ff9800;}
+
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.closebtn:hover {
+    color: black;
+}
+
+#barchartcontainer
+{
+  border: solid 1px #000;
+}
+
+#piechartcontainer
+{
+  border: solid 1px #000;
+}
+
+.budgetDescription {
+  position: absolute;
+  top: 400px;
+}
+
+.budgetDescription2 {
+  position: absolute;
+  top: 450px;
 }

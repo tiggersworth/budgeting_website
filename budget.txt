@@ -1,0 +1,5 @@
+Rent 25
+Food 15
+Gas 5
+Phone 5
+Electric 5
