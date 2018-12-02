@@ -32,6 +32,7 @@ $(document).ready(function() {
     var budget = 250;
 
     $("#display").click(function() {
+        if(checkMissingExpenseFields()) {
         //reset piechart and array before every display
         $("#piechart").empty();
         expenses = [['Charges', 'Percent of Budget']];
@@ -56,6 +57,10 @@ $(document).ready(function() {
         google.charts.setOnLoadCallback(drawChart);
 
         document.getElementById('file').disabled = true;
+      } else {
+        alert("Please make sure you used numerical values for Cost and all expense fields are filled out.");
+      }
+
     });
 
     //if a file is uploaded, this method is triggered
@@ -233,5 +238,27 @@ for (i = 0; i < close.length; i++) {
         setTimeout(function(){ div.style.display = "none"; }, 600);
     }
 }
+
     }
+
+    function checkMissingExpenseFields(){
+      var name = document.getElementsByClassName("fieldname");
+      var cost = document.getElementsByClassName("fieldcost");
+      var i, j;
+
+      for (i = 0; i < name.length; i++) {
+        if (name[i].value == "") {
+          return false;
+        }
+      }
+
+      for (j = 0; j < cost.length; j++) {
+        if (cost[j].value == "" || isNaN(cost[j].value)) {
+          return false;
+        }
+      }
+
+      return true;
+    }
+
 });
