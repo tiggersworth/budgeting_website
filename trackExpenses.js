@@ -188,12 +188,50 @@ $(document).ready(function() {
     }
 
     function displayWeeklyBudgetValues(starting, remaining) {
-        $("#bd1").remove();
-        $("#bd2").remove();
-
+      $("#bd1").remove();
       var start = $("<font size=\"3\" id=\"bd1\" class=\"budgetDescription\" >Starting Weekly Budget: <b>" + starting + "</b></font>");
-      var remain = $("<font size=\"3\" id=\"bd2\" class=\"budgetDescription2\" >Remaining Budget: <b>" + remaining + "</b></font>");
       $("#piechartcontainer").append(start);
-      $("#piechartcontainer").append(remain);
+
+      $("#bd2").remove();
+      $("#msg").remove();
+      $("#closebtn").remove();
+
+      //TODO: fix this to make div container visible again for messages
+      //var div = this.parentElement;
+      //div.style.opacity = "0";
+      //setTimeout(function(){ div.style.display = "none"; }, 600);
+
+      //if there is still money remaining in the budget
+      var remain, message;
+      var button = $("<span class=\"closebtn\" id=\"closebtn\">&times;</span>");
+
+      if(remaining > 0) {
+      remain = $("<font size=\"3\" id=\"bd2\" class=\"budgetDescription2\" color=\"green\">Remaining Budget: <b>" + remaining + "</b></font>");
+
+      message = $("<font id=\"msg\">Keep up your good budgeting habits!</font>");
+
+      document.getElementById("alert").style.backgroundColor = "#4CAF50";
+      } else {
+      remain = $("<font size=\"3\" id=\"bd2\" class=\"budgetDescription2\" color=\"red\">Remaining Budget: <b>" + remaining + "</b></font>");
+
+      message = $("<font id=\"msg\">You have <strong>exceeded</strong> your allocated budget! Check out this <a href=\"https://wallethub.com/edu/budgeting-tips/16897/\">page</a> for budgeting tips!</font>");
+
+      document.getElementById("alert").style.backgroundColor = "#f44336";
+    }
+
+    $("#piechartcontainer").append(remain);
+    $("#alert").append(button);
+    $("#alert").append(message);
+
+    var close = document.getElementsByClassName("closebtn");
+var i;
+
+for (i = 0; i < close.length; i++) {
+    close[i].onclick = function(){
+        var div = this.parentElement;
+        div.style.opacity = "0";
+        setTimeout(function(){ div.style.display = "none"; }, 600);
+    }
+}
     }
 });
