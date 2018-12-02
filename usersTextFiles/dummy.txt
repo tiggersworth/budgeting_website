@@ -1,3 +1,0 @@
-dummy@dummyemail.com
-dummy
-password123
