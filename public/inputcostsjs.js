@@ -7,9 +7,9 @@ document.addEventListener("DOMContentLoaded", event => {
 
 var db = firebase.firestore();
 
-db.settings({
-  timestampsInSnapshots: true
-});
+// db.settings({
+//   timestampsInSnapshots: true
+// });
 
 function checkSetup() {
   if (!window.firebase || !(firebase.app instanceof Function) || !firebase.app().options) {
@@ -34,6 +34,8 @@ var netflix;
 var spotify;
 var internet;
 var cell_phone;
+var health_insurance;
+var dog_insurance;
 
 $('.table-add').click(function () {
   var $clone = $TABLE.find('tr.hide').clone(true).removeClass('hide table-line');
@@ -83,6 +85,16 @@ $BTN.click(function () {
     electric = data[1];
     food = data[2];
     gas = data[3];
+    car_insurance = data[4];
+    health_insurance = data[5];
+    dog_expenses = data[6];
+    dental_insurance = data[7];
+    dog_insurance = data[8];
+    going_out_expenses = data[9];
+    netflix = data[10];
+    spotify = data[11];
+    internet = data[12];
+    cell_phone = data[13];
   });
   getUserUID();
   // Output the result
@@ -110,15 +122,26 @@ function getUserUID() {
     if (user) {
       var userid = user.uid;
       var stringv = String(userid); //stringv holds string version of user.uid
-      console.log("userid",stringv);
+      // console.log("userid",stringv);
       db.collection("users").doc(stringv).set({
         rent: rent,
         electric: electric,
         food: food,
-        gas: gas
+        gas: gas,
+        car_insurance: car_insurance,
+        health_insurance: health_insurance,
+        dog_expenses: dog_expenses,
+        dental_insurance: dental_insurance,
+        dog_insurance: dog_insurance,
+        going_out_expenses: going_out_expenses,
+        netflix: netflix,
+        spotify: spotify,
+        internet: internet,
+        cell_phone: cell_phone
       })
-      console.log(rent);
-      console.log(electric);
+      // console.log(rent);
+      // console.log(electric);
+      getData();
 
       return user.uid;
     }
@@ -139,10 +162,47 @@ function pushUserUID() {
     console.error("Error adding document: ", error);
 });
 }
+
+var stringUser;
+
+function getStringUserUID() {
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      var userid = user.uid; //NON STRING OF ID
+      var stringv = String(userid); //stringv holds string version of user.uid
+      console.log("userid",stringv);
+      stringUser = stringv.valueOf();
+      console.log("heeere", stringUser);
+      return stringv;
+    }
+  });
+}
+
+getStringUserUID();
+//var docRef = db.collection("users").doc(getStringUserUID());
+//console.log(stringUser);
+
+function getData() {
+  var docRef = db.collection("users").doc(String(firebase.auth().currentUser.uid));
+
+  docRef.get().then(function(doc) {
+      if (doc.exists) {
+          console.log("Document data:", doc.data());
+      } else {
+          // doc.data() will be undefined in this case
+          console.log("No such document!");
+      }
+  }).catch(function(error) {
+      console.log("Error getting document:", error);
+  });
+}
+console.log(stringUser);
+
 // initFirebaseAuth();
 checkSetup();
 setProfile();
 getUserUID();
+getData();
 //pushUserUID();
 // welcomeUser();
 
