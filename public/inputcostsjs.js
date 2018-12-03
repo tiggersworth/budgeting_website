@@ -1,6 +1,39 @@
+document.addEventListener("DOMContentLoaded", event => {
+
+  const app = firebase.app();
+  console.log(app)
+
+});
+
+var db = firebase.firestore();
+
+db.settings({
+  timestampsInSnapshots: true
+});
+
+function checkSetup() {
+  if (!window.firebase || !(firebase.app instanceof Function) || !firebase.app().options) {
+    window.alert('You have not configured and imported the Firebase SDK. ' +
+        'Make sure you go through the codelab setup instructions and make ' +
+        'sure you are running the codelab using `firebase serve`');
+  }
+}
+
 var $TABLE = $('#table');
 var $BTN = $('#export-btn');
 var $EXPORT = $('#export');
+var rent;
+var electric;
+var food;
+var gas;
+var car_insurance;
+var dog_expenses;
+var dental_insurance;
+var going_out_expenses;
+var netflix;
+var spotify;
+var internet;
+var cell_phone;
 
 $('.table-add').click(function () {
   var $clone = $TABLE.find('tr.hide').clone(true).removeClass('hide table-line');
@@ -30,25 +63,88 @@ $BTN.click(function () {
   var $rows = $TABLE.find('tr:not(:hidden)');
   var headers = [];
   var data = [];
-  
+
   // Get the headers (add special header logic here)
   $($rows.shift()).find('th:not(:empty)').each(function () {
     headers.push($(this).text().toLowerCase());
   });
-  
+
   // Turn all existing rows into a loopable array
   $rows.each(function () {
     var $td = $(this).find('td');
     var h = {};
-    
+
     // Use the headers from earlier to name our hash keys
     headers.forEach(function (header, i) {
-      h[header] = $td.eq(i).text();   
+      h[header] = $td.eq(i).text();
     });
-    
     data.push(h);
+    rent = data[0];
+    electric = data[1];
+    food = data[2];
+    gas = data[3];
   });
-  
+  getUserUID();
   // Output the result
+
   $EXPORT.text(JSON.stringify(data));
 });
+
+function setProfile() {
+  var user = firebase.auth().currentUser;
+  var name, email, photoUrl, uid, emailVerified;
+
+  if (user != null) {
+  name = user.displayName;
+  email = user.email;
+  photoUrl = user.photoURL;
+  emailVerified = user.emailVerified;
+  uid = user.uid;  // The user's ID, unique to the Firebase project. Do NOT use
+                   // this value to authenticate with your backend server, if
+                   // you have one. Use User.getToken() instead.
+                 }
+}
+
+function getUserUID() {
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      var userid = user.uid;
+      var stringv = String(userid); //stringv holds string version of user.uid
+      console.log("userid",stringv);
+      db.collection("users").doc(stringv).set({
+        rent: rent,
+        electric: electric,
+        food: food,
+        gas: gas
+      })
+      console.log(rent);
+      console.log(electric);
+
+      return user.uid;
+    }
+  });
+}
+
+function getUserName() {
+  return firebase.auth().currentUser.displayName;
+};
+
+function pushUserUID() {
+  db.collection("users").doc(stringv).set({
+})
+.then(function(docRef) {
+    console.log("Document written with ID: ", docRef.id);
+})
+.catch(function(error) {
+    console.error("Error adding document: ", error);
+});
+}
+// initFirebaseAuth();
+checkSetup();
+setProfile();
+getUserUID();
+//pushUserUID();
+// welcomeUser();
+
+// Shortcuts to DOM Elements.
+// var welcomeMessage = document.getElementById('welcome_message');
