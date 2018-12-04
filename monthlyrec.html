@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang= "en"
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+    crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+    <!-- Custom fonts for this template -->
+    <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/one-page-wonder.min.css" rel="stylesheet">
+
+<style>
+.aligncenter {
+    text-align: center;
+}
+.green{
+    color: green;
+}
+.red{
+    color: red;
+}
+
+</style>
+
+
+<script type="text/javascript">
+    function yearly(){
+        var income = document.getElementById("income").value;
+
+
+        document.getElementById("demoy").innerHTML = income;
+
+        var a = 0.3;
+        var house = income * a;
+        document.getElementById("demoy1").innerHTML = house;
+
+        var b = 0.1;
+        var util = income * b;
+        document.getElementById("demoy2").innerHTML = util;
+
+        var c = 0.15;
+        var food = income * c;
+        document.getElementById("demoy3").innerHTML = food;
+
+        var d = 0.1;
+        var trans = income * d;
+        document.getElementById("demoy4").innerHTML = trans;
+
+        var e = 0.1;
+        var debt = income * e;
+        document.getElementById("demoy5").innerHTML = debt;
+
+        var f = 0.1;
+        var save= income * f;
+        document.getElementById("demoy6").innerHTML = save;
+
+        var g = 0.05;
+        var cloth = income * g;
+        document.getElementById("demoy7").innerHTML = cloth;
+
+        var h = 0.05;
+        var entert = income * h;
+        document.getElementById("demoy8").innerHTML = entert;
+
+        var i = 0.05;
+        var insur = income * i;
+        document.getElementById("demoy9").innerHTML = insur;
+
+    }
+</script>
+
+
+
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script>
+function myFunction() {
+  var fi = document.getElementById("internet").value;
+  var si = document.getElementById("rent").value;
+  var ti = document.getElementById("ele").value;
+  var foi = document.getElementById("gas").value;
+  var car = document.getElementById("car").value;
+  var cargas = document.getElementById("cargas").value;
+   var cell = document.getElementById("cell").value;
+   var food = document.getElementById("food").value;
+     var misc = document.getElementById("misc").value;
+   var x1 = document.getElementById("demo");
+   var x2 = document.getElementById("demobad");
+
+
+
+if (Number(fi) <= 40) {
+    document.getElementById("demo").innerHTML = "Great! You are under the average!";
+    document.getElementById("demobad").innerHTML = "";
+ 
+
+}
+if (Number(fi) >  40) {
+    document.getElementById("demobad").innerHTML = "Uh-oh! You are over the average.";
+    document.getElementById("demo").innerHTML = "";
+ 
+
+}
+ 
+if (Number(si) <= 800) {
+    document.getElementById("demo2").innerHTML = "Great! You are under the average";
+    document.getElementById("demobad2").innerHTML = "";
+ 
+
+}
+if (Number(si) > 800) {
+    document.getElementById("demobad2").innerHTML = "Uh-oh! You are over the average";
+    document.getElementById("demo2").innerHTML = "";
+ 
+
+}
+if (Number(ti) <= 20) {
+    document.getElementById("demo3").innerHTML = "Great! You are under the average";
+    document.getElementById("demobad3").innerHTML = "";
+ 
+
+}
+if (Number(ti) > 20) {
+    document.getElementById("demobad3").innerHTML = "Uh-oh! You are over the average";
+    document.getElementById("demo3").innerHTML = "";
+ 
+
+}
+if (Number(foi) <= 50) {
+    document.getElementById("demo4").innerHTML = "Great! You are under the average";
+    document.getElementById("demobad4").innerHTML = "";
+ 
+
+}
+if (Number(foi) > 50) {
+    document.getElementById("demobad4").innerHTML = "Uh-oh! You are over the average";
+    document.getElementById("demo4").innerHTML = "";
+ 
+
+}
+if (Number(car) <= 120) {
+    document.getElementById("demo5").innerHTML = "Great! You are under the average";
+    document.getElementById("demobad5").innerHTML = "";
+ 
+
+}
+if (Number(foi) > 120) {
+    document.getElementById("demobad5").innerHTML = "Uh-oh! You are over the average";
+    document.getElementById("demo5").innerHTML = "";
+ 
+
+}
+if (Number(cargas) <= 80) {
+    document.getElementById("demo6").innerHTML = "Great! You are under the average";
+    document.getElementById("demobad6").innerHTML = "";
+ 
+
+}
+if (Number(cargas) > 80) {
+    document.getElementById("demobad6").innerHTML = "Uh-oh! You are over the average";
+    document.getElementById("demo6").innerHTML = "";
+ 
+
+}
+if (Number(cell) <= 40) {
+    document.getElementById("demo7").innerHTML = "Great! You are under the average";
+    document.getElementById("demobad7").innerHTML = "";
+ 
+
+}
+if (Number(cell) > 40) {
+    document.getElementById("demobad7").innerHTML = "Uh-oh! You are over the average";
+    document.getElementById("demo7").innerHTML = "";
+ 
+
+}
+if (Number(food) <= 100) {
+    document.getElementById("demo8").innerHTML = "Great! You are under the average";
+    document.getElementById("demobad8").innerHTML = "";
+ 
+
+}
+if (Number(food) > 100) {
+    document.getElementById("demobad8").innerHTML = "Uh-oh! You are over the average";
+    document.getElementById("demo8").innerHTML = "";
+ 
+
+}
+if (Number(misc) <= 30) {
+    document.getElementById("demo9").innerHTML = "Great! You are under the average";
+    document.getElementById("demobad9").innerHTML = "";
+ 
+
+}
+if (Number(misc) > 30) {
+    document.getElementById("demobad9").innerHTML = "Uh-oh! You are over the average";
+    document.getElementById("demo9").innerHTML = "";
+ 
+
+}
+
+}
+</script>
+
+<style>
+.aligncenter {
+    text-align: center;
+}
+
+</style>
+<style>
+#calc-contain{
+  position: relative;
+  width: 400px;
+  border: 2px solid black;
+  border-radius: 12px;
+  margin: 0px auto;
+  padding: 20px 20px 100px 20px;
+}
+#agh{
+  position: relative;
+  float: right;
+  margin-top: 15px;
+}
+#agh p{
+  font-size: 20px;
+  font-weight: 900;
+}
+input[type=button] {
+  background: lightGray;
+  width: 20%;
+  font-size: 20px;
+  font-weight: 900;
+  border-radius: 7px;
+  margin-left: 13px;
+  margin-top: 10px;
+}
+input[type=button]:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+input[type=button]:hover {
+  background-color: #003300;
+  color: white;
+}
+
+input[type = text] {
+  position: relative;
+  display: block;
+  width: 90%;
+  margin: 5px auto;
+  font-size: 20px;
+  padding: 10px;
+  box-shadow: 4px 0px 12px black inset;
+}
+
+</style>
+
+
+</head>
+
+
+<body>
+	
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom static-top">
+      <div class="container">
+        <a class="navbar-brand" href="home_page.html">Home</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+          
+        <a class="navbar-brand" href="track_expenses.html">Tracker</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+          
+        <a class="navbar-brand" href="budget_calculator.html">Calculator</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+          
+        <a class="navbar-brand" href="fico.html">Fico</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+          
+        <a class="navbar-brand" href="incomesplit.html">Income</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+          
+        <a class="navbar-brand" href="monthlyrec.html">Recommendator</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+          
+        <a class="navbar-brand" href="give_feedback.html">Feedback</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+          
+          
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="login.html">Log In</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="profile.html">Profile</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">You & Your <i class="fas fa-dollar-sign"></i><i class="fas fa-dollar-sign"></i><i class="fas fa-dollar-sign"></i><i class="fas fa-dollar-sign"></i><i class="fas fa-dollar-sign"></i><i class="fas fa-dollar-sign"></i>. </h1>
+     
+    </div>
+  </div>
+
+
+
+  <div class="container">
+    
+      <div class="container">
+       
+        
+      </div>
+    </nav>
+    <br>
+    <br>
+    <section id="Table">
+
+      <h1>Monthly Budget Reccomenda-tor</h1>
+      <br>
+<ul>
+  <li><strong>Before we get started, input your costs to get an idea of how much you are <span class="green">under</span> or <span class="red">over</span> paying</strong></li>
+  <br>
+
+</ul>
+      
+      <p class= "aligncenter">
+         <img src="budget.png" width="500" height="700">
+         <br>
+         <br>
+      </p>
+  <br>
+     
+<h2><i>Input your expenses for a single person !</i></h2>
+<br>
+Internet Cost: 
+<input id="internet" name="internet" required="required" type="text">      
+<p align="right" id="demo" class="btn btn-success"></p>
+<p align="right" id="demobad" class="btn btn-danger"></p>
+
+<br>
+<br>
+
+Rent Cost: 
+<input id="rent" name="rent" required="required" type="text">               
+<p align="right" id="demo2" class="btn btn-success"></p>
+<p align="right" id="demobad2" class="btn btn-danger"></p>
+
+
+<br>
+<br>
+
+
+Electric Cost: 
+<input id="ele" name="ele" required="required" type="text">               
+<p align="right" id="demo3" class="btn btn-success"></p>
+<p align="right" id="demobad3" class="btn btn-danger"></p>
+
+<br>
+<br>
+
+Gas Cost: 
+<input id="gas" name="gas" required="required" type="text">               
+<p align="right" id="demo4" class="btn btn-success"></p>
+<p align="right" id="demobad4" class="btn btn-danger"></p>
+<br>
+<br>
+Car Insurance Cost: 
+<input id="car" name="car" required="required" type="text">               
+<p align="right" id="demo5" class="btn btn-success"></p>
+<p align="right" id="demobad5" class="btn btn-danger"></p>
+
+<br>
+<br>
+Car Gas Cost: 
+<input id="cargas" name="cargas" required="required" type="text">               
+<p align="right" id="demo6" class="btn btn-success"></p>
+<p align="right" id="demobad6" class="btn btn-danger"></p>
+<br>
+<br>
+Cell Cost: 
+<input id="cell" name="cell" required="required" type="text">               
+<p align="right" id="demo7" class="btn btn-success"></p>
+<p align="right" id="demobad7" class="btn btn-danger"></p>
+<br>
+<br>
+Food Cost: 
+<input id="food" name="food" required="required" type="text">               
+<p align="right" id="demo8" class="btn btn-success"></p>
+<p align="right" id="demobad8" class="btn btn-danger"></p>
+
+<br>
+<br>
+Misc Cost: 
+<input id="misc" name="misc" required="required" type="text">               
+<p align="right" id="demo9" class="btn btn-success"></p>
+<p align="right" id="demobad9" class="btn btn-danger"></p>
+
+<br>
+<br>
+<button  class="btn btn-primary" onclick="myFunction()">Calculate</button>
+<br>
+<br>
+<br>
+
+
+
+
+    </section>
+    <br>
+    <h1> Signs that you are spending too much</h1>
+    <br>
+
+<ol>
+   <li> You carry credit card debt. Thirty-four percent of households admit to carrying credit card debt month to month. If you’re not paying off your credit card balance completely at the end of the month, you’re probably spending more than you should. Without a doubt, you’re paying unnecessary interest payments. (See Expert Tips For Cutting Credit Card Debt and 6 Major Credit Card Mistakes.)  </li>
+<br>
+<li>
+You have no retirement savings. The problem is getting worse. About one third of working-age Americans have no retirement savings. That will spell catastrophe later in life and will force you to work well into your retirement years.</li>
+<br>
+<li>
+ You don’t have enough saved for retirement. The number varies but most financial planners agree that you have to save 10% to 15% of your income each year starting in your 20s. That’s hard to do but it’s essential.</li>
+<br>
+<li>
+ You have too much house.  Are you paying more than 28% of your income for housing? If you are, you’re paying too much.</li>
+<br>
+<li>
+You have too much car. The College Board advises new graduates to spend no more than 15% of their budget on transportation. If you’re a little older than a 20-something college graduate, you might be able to spend a little more but be conservative. Cars depreciate fast!</li>
+<br>
+<li>
+You aren’t saving for your children’s college education. Student loan debt is a huge problem for today’s recent college graduates. The average graduate will have $33,000 in student loan debt, according to an analysis by financial aid expert Mark Kantrowitz, now publisher at the Edvisors websites. If you aren’t saving now, your children could be saddled with debt at a time where they’re just starting their careers.</li>
+<br>
+<li>
+You don’t have health insurance. If you don’t have health insurance, you’re asking for financial disaster. If you needed a coronary bypass, you could pay more than $38,500. A serious car accident or long-term care will come with a significantly higher bill. And now, you'll also owe penalties on your income tax for having no health insurance unless you can qualify for an exemption. See Tips on the Health Insurance Marketplace/Exchange.</li>
+<br>
+<li>
+You eat restaurant food too much. One study found that 1 in 4 people eats fast food every day. Pack your lunch to save one-third to one-half the cost of fast food. Same with coffee. One study found savings as high as 60%.</li>
+<br>
+<li>
+ You don’t have an emergency fund. Experts are all over the map when it comes to the size of your emergency fund. Somewhere between 3 and 12 months’ funds is what you’ll read, but if you have nothing saved for unexpected expenses, don’t worry so much about how many months of expenses you should save – just get started. </li>
+<br>
+<li>
+ You don’t follow the 50/20/30 rule. Half of your budget should go to essentials, 20% to debt payments, retirement and savings contributions and other “financial priorities,” and 30% to lifestyle choices – 300 channels of cable and a brand new cell phone, for example. But this is only one guideline and may not apply to your financial situation. The point is to have financial discipline about how you spend your money. Make a rule of your own or even better, have a trusted financial planner help you make a saving plan</li>
+<br>
+   </ol>
+        <br>
+        <br>
+        <br>
+<iframe width="550" height="315" src="https://www.youtube.com/embed/8F0mH84w6e4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="550" height="315" src="https://www.youtube.com/embed/IMxciOsAoPY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+   <br>
+    <br>
+<br>
+    <br>
+
+
+ <div class="card bg-warning text-white mb-3">
+            <div class="card-header">TAKE CONTROL OF YOUR FINANCES!</div>
+            <div class="card-body">
+                <h4 class="card-title">If you thought you were paying under but you arent, Time to make some changes!</h4>
+                <a href="https://www.quicken.com/home-budget-cost-living-reality-check">1. Reality living - know your limit</a>
+                <br>
+                <a href="https://www.daveramsey.com/baby-steps">2. Starting Dave Ramsey's seven baby steps</a>
+                <br>
+                <a href="https://www.youtube.com/watch?v=FdnhKJG6bYk">3. The Difference between Poor and Broke</a>
+                <br>
+                <a href="https://www.advantageccs.org/blog/20-things-you-spend-too-much-money-on">4. 20 everyday things you spend too much money on</a>
+            </div>
+        </div>
+
+
+    
+
+
+
+
+
+<br>
+<br>
+<br>
+<div class="card text-center">
+            <div class="card-header">
+                &nbsp;&nbsp;
+            </div>
+            <div class="card-body">
+                <h4 class="card-title">Why are you spending above your means?</h4>
+                <p class="card-text">The psychology behind compulsive spending</p>
+                <a class="btn btn-dark" href="https://www.psychologytoday.com/us/blog/science-choice/201801/10-reasons-why-people-spend-too-much">Read More</a>
+            </div>
+            <div class="card-footer text-muted">
+                4 Days Ago
+            </div>
+        </div>
+  
+ 
+
+
+
+
+
+
+
+<div style="margin-top:500px;"></div>
+
+
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+
+<script>
+    $('body').scrollspy({ target: '#main-nav' });
+
+    // Add smooth scrolling
+    $('#main-nav a').on('click', function (e) {
+      // Check for a hash value
+      if (this.hash !== '') {
+        // Prevent default behavior
+        e.preventDefault();
+
+        // Store hash
+        const hash = this.hash;
+
+        // Animate smooth scroll
+        $('html, body').animate({
+          scrollTop: $(hash).offset().top
+        }, 900, function () {
+          // Add hash to URL after scroll
+          window.location.hash = hash;
+        });
+      }
+    });
+  </script>
+
+
+
+
+
+
+	</body>
+</html>
