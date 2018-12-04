@@ -2,8 +2,23 @@
 <html lang="en" >
 
 <head>
+
+  <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyC57E-X0VuGn9U0rZlCTU-L5Gt1_vv07cA",
+      authDomain: "budgetbud-a9544.firebaseapp.com",
+      databaseURL: "https://budgetbud-a9544.firebaseio.com",
+      projectId: "budgetbud-a9544",
+      storageBucket: "budgetbud-a9544.appspot.com",
+      messagingSenderId: "967232630452"
+    };
+    firebase.initializeApp(config);
+  </script>
+
   <meta charset="UTF-8">
- 
+
   <link rel='stylesheet' href='http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css'>
 <link rel='stylesheet' href='http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css'>
 <!-- <link rel="stylesheet" href="style.css"> -->
@@ -46,24 +61,44 @@
 }
 
 </style>
-  
+
 </head>
 
 <body>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+      // // The Firebase SDK is initialized and available here!
+      //
+      // firebase.auth().onAuthStateChanged(user => { });
+      // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
+      // firebase.messaging().requestPermission().then(() => { });
+      // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
+      //
+      // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+      try {
+        let app = firebase.app();
+        let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');
+      } catch (e) {
+        console.error(e);
+      }
+    });
+  </script>
 
   <div class="container">
   <h1>Enter your monthly budget costs</h1>
   <br>
   <br>
   <ul>
-    <li>Don't worry if your budget changes, you can edit it later!</li> 
+    <li>Don't worry if your budget changes, you can edit it later!</li>
     <li>Enter each category and the amount of money you have to spend for that category per month.</li>
   </ul>
   <br>
   <br>
-  
+
   <div id="table" class="table-editable">
-  
+
     <table class="table">
       <tr>
         <th>Category</th>
@@ -226,28 +261,6 @@
         </td>
       </tr>
       <tr>
-        <td contenteditable="true">Electric</td>
-        <td contenteditable="true">100</td>
-        <td>
-          <span class="table-remove glyphicon glyphicon-remove"></span>
-        </td>
-        <td>
-          <span class="table-up glyphicon glyphicon-arrow-up"></span>
-          <span class="table-down glyphicon glyphicon-arrow-down"></span>
-        </td>
-      </tr>
-      <tr>
-        <td contenteditable="true">Dental Insurance</td>
-        <td contenteditable="true">90</td>
-        <td>
-          <span class="table-remove glyphicon glyphicon-remove"></span>
-        </td>
-        <td>
-          <span class="table-up glyphicon glyphicon-arrow-up"></span>
-          <span class="table-down glyphicon glyphicon-arrow-down"></span>
-        </td>
-      </tr>
-      <tr>
         <td contenteditable="true">Mortgage</td>
         <td contenteditable="true">120</td>
         <td>
@@ -271,8 +284,9 @@
       </tr>
     </table>
   </div>
-  
+
   <button id="export-btn" class="btn btn-primary">Create my budget!</button>
+
   <p id="export"></p>
 
   <br>
@@ -286,7 +300,7 @@
 <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js'></script>
 <script src='https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js'></script>
 <script src='http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore.js'></script>
-<script  src="input_costsjs.js"></script>
+<script  src="inputcostsjs.js"></script>
 
 
 
