@@ -128,22 +128,22 @@ function getUserUID() {
       var stringv = String(userid); //stringv holds string version of user.uid
       // console.log("userid",stringv);
       db.collection("users").doc(stringv).set({
-        rent: rent,
-        electric: electric,
-        food: food,
-        gas: gas,
-        car_insurance: car_insurance,
-        health_insurance: health_insurance,
-        dog_expenses: dog_expenses,
-        dental_insurance: dental_insurance,
-        dog_insurance: dog_insurance,
-        going_out_expenses: going_out_expenses,
-        netflix: netflix,
-        spotify: spotify,
-        internet: internet,
-        cell_phone: cell_phone,
-        mortgage: mortgage,
-        household: household
+        value1: rent,
+        value2: electric,
+        value3: food,
+        value4: gas,
+        value5: car_insurance,
+        value6: health_insurance,
+        value7: dog_expenses,
+        value8: dental_insurance,
+        value9: dog_insurance,
+        value10: going_out_expenses,
+        value11: netflix,
+        value12: spotify,
+        value13: internet,
+        value14: cell_phone,
+        value15: mortgage,
+        value16: household
       })
       // console.log(rent);
       // console.log(electric);
