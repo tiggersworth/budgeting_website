@@ -187,10 +187,65 @@ function getStringUserUID() {
 getStringUserUID();
 //var docRef = db.collection("users").doc(getStringUserUID());
 //console.log(stringUser);
+var totalcost = 0;
 
 function getData() {
+    console.log('yoooo');
   var docRef = db.collection("users").doc(String(firebase.auth().currentUser.uid));
 
+  docRef.get().then(function(doc) {
+      if (doc.exists) {
+          console.log("Document data:", doc.data());
+          item = JSON.stringify(doc.data());
+          item1 = JSON.parse(item);
+          totalcost = parseInt(item1.value1.cost) + parseInt(item1.value2.cost) + parseInt(item1.value3.cost) + parseInt(item1.value4.cost) + parseInt(item1.value5.cost) + parseInt(item1.value6.cost) + parseInt(item1.value7.cost) + parseInt(item1.value8.cost) + parseInt(item1.value9.cost) + parseInt(item1.value10.cost)+
+          parseInt(item1.value11.cost)+
+          parseInt(item1.value12.cost)+
+          parseInt(item1.value13.cost)+
+          parseInt(item1.value14.cost)+
+          parseInt(item1.value15.cost)+
+          parseInt(item1.value16.cost);
+          
+          db.collection('users').doc(firebase.auth().currentUser.uid).update({
+              value0: totalcost
+          });
+          console.log('totalcost: ', totalcost);
+          
+      } else {
+          // doc.data() will be undefined in this case
+          console.log("No such document!");
+      }
+  }).catch(function(error) {
+      console.log("Error getting document:", error);
+  });
+}
+//console.log(stringUser);
+
+function pushtotalvalue() {
+    console.log('heyyyy');
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      console.log('hiiiiiiiiiii');
+      var userid = user.uid;
+      var stringv = String(userid); //stringv holds string version of user.uid
+      // console.log("userid",stringv);
+      db.collection("users").doc(stringv).set({
+        
+        value17: totalcost
+      })
+      // console.log(rent);
+      // console.log(electric);
+      //getData();
+
+      return user.uid;
+    }
+  });
+}
+
+function readfinal() {
+console.log('hiiiiiiii');
+  var docRef = db.collection('users').doc(user.uid);
+  console.log(user.uid);
   docRef.get().then(function(doc) {
       if (doc.exists) {
           console.log("Document data:", doc.data());
@@ -202,14 +257,15 @@ function getData() {
   }).catch(function(error) {
       console.log("Error getting document:", error);
   });
-}
-console.log(stringUser);
-
+};
 // initFirebaseAuth();
 checkSetup();
 setProfile();
 getUserUID();
+//readfinal();
 getData();
+//readfinal();
+//getData();
 //pushUserUID();
 // welcomeUser();
 
