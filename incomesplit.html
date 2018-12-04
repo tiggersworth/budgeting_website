@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang= "en"
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+    crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+<style>
+.aligncenter {
+    text-align: center;
+}
+.green{
+    color: green;
+}
+.red{
+    color: red;
+
+}
+      
+</style>
+<body style="background-color:whitesmoke;">
+</body>
+
+<script type="text/javascript">
+    function yearly(){
+        var income = document.getElementById("income").value;
+
+
+        document.getElementById("demoy").innerHTML = income;
+
+        var a = 0.3;
+        var house = income * a;
+        document.getElementById("demoy1").innerHTML = house;
+
+        var b = 0.1;
+        var util = income * b;
+        document.getElementById("demoy2").innerHTML = util;
+
+        var c = 0.15;
+        var food = income * c;
+        document.getElementById("demoy3").innerHTML = food;
+
+        var d = 0.1;
+        var trans = income * d;
+        document.getElementById("demoy4").innerHTML = trans;
+
+        var e = 0.1;
+        var debt = income * e;
+        document.getElementById("demoy5").innerHTML = debt;
+
+        var f = 0.1;
+        var save= income * f;
+        document.getElementById("demoy6").innerHTML = save;
+
+        var g = 0.05;
+        var cloth = income * g;
+        document.getElementById("demoy7").innerHTML = cloth;
+
+        var h = 0.05;
+        var entert = income * h;
+        document.getElementById("demoy8").innerHTML = entert;
+
+        var i = 0.05;
+        var insur = income * i;
+        document.getElementById("demoy9").innerHTML = insur;
+
+    }
+</script>
+
+
+
+
+
+
+<style>
+.aligncenter {
+    text-align: center;
+}
+
+</style>
+<style>
+#calc-contain{
+  position: relative;
+  width: 400px;
+  border: 2px solid black;
+  border-radius: 12px;
+  margin: 0px auto;
+  padding: 20px 20px 100px 20px;
+}
+#agh{
+  position: relative;
+  float: right;
+  margin-top: 15px;
+}
+#agh p{
+  font-size: 20px;
+  font-weight: 900;
+}
+input[type=button] {
+  background: lightGray;
+  width: 20%;
+  font-size: 20px;
+  font-weight: 900;
+  border-radius: 7px;
+  margin-left: 13px;
+  margin-top: 10px;
+}
+input[type=button]:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+input[type=button]:hover {
+  background-color: #003300;
+  color: white;
+}
+
+input[type = text] {
+  position: relative;
+  display: block;
+  width: 90%;
+  margin: 5px auto;
+  font-size: 20px;
+  padding: 10px;
+  box-shadow: 4px 0px 12px black inset;
+}
+
+</style>
+
+
+</head>
+
+
+<body>
+  
+    <nav class="navbar navbar-expand-sm navbar-light bg-light mb-3">
+        <div class="container">
+            <a class="navbar-brand" href="#"></a>
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="home_page.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="track_expenses.html">Expense Tracker</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="user_settings.html">Profile</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">Create your B<i class="fas fa-dollar-sign"></i>dget now! </h1>
+      <p class="lead">How much <i>should</i> you really be paying?</p>
+    </div>
+  </div>
+
+
+
+  <div class="container">
+    
+      <div class="container">
+       
+        
+      </div>
+    </nav>
+
+
+
+
+<br>
+<br>
+
+
+<section id="Create your budget">
+      <h3>Do it right- the second time around!</h3>
+
+<ul style="list-style-type:square">
+  <br>
+  <li>We will give you your recommended breakdown!</li>
+  <li>no commas please </li>
+  <li>You can input before pre or post tax filings:</li>
+</ul>
+<br>
+<br>
+<img src="debt.png" width="300" height="300">
+<img src="arrows.png" width="300" height="300">
+<img src="paid.png" width="300" height="300">
+<br>
+    <br>
+    <br>
+     <h4> Enter your yearly or monthly income:</h4>
+      <br>
+      <input id="income" name="income" required="required" type="text"> 
+      <br>
+      <button  class="btn btn-primary" onclick="yearly()">Calculate</button>
+      <br>
+      <br>
+
+
+      <h5>
+      With an yearly/monthly income of: 
+      <p align="right" id="demoy" class="btn btn-success"></p>
+      <br>
+      <br>
+      <strong>Your suggested yearly/monthly budget breakdown is:</strong>
+      <br>
+      <br>
+      <br>
+
+      Your utilities (gas, electric, internet, water) should <strong>not</strong> exceed:&nbsp;&nbsp;
+      <p align="right" id="demoy2" class="btn btn-outline-primary"></p>
+      <br>
+      Your car insurance/personal expenses should <strong>not</strong> exceed:&nbsp;&nbsp;
+      <p align="right" id="demoy9" class="btn btn-outline-secondary"></p>
+      <br>
+      Your food expenses (grocery and restaurant) should <strong>not</strong> exceed:&nbsp;&nbsp;
+      <p align="right" id="demoy3" class="btn btn-outline-success"></p>
+      <br>
+      Your savings per month/year:&nbsp;&nbsp;
+      <p align="right" id="demoy6" class="btn btn-outline-info"></p>
+      <br>
+      Your entertainment (netflix, hulu, spotify) expenses should <strong>not</strong> exceed:&nbsp;&nbsp;
+      <p align="right" id="demoy8" class="btn btn-outline-warning"></p>
+      <br>
+      Amount of debt you can pay per month/year:&nbsp;&nbsp;
+      <p align="right" id="demoy5" class="btn btn-outline-danger"></p>
+      <br>
+      Your clothing expenses should <strong>not</strong> exceed:&nbsp;&nbsp;
+      <p align="right" id="demoy7" class="btn btn-outline-primary"></p>
+      <br>
+      Your housing (rent) should <strong>not</strong> exceed:&nbsp;&nbsp;
+      <p align="right" id="demoy1" class="btn btn-outline-info"></p>
+      <br>
+      Your transportation (car, gas) expenses should <strong>not</strong> exceed:&nbsp;&nbsp;
+      <p align="right" id="demoy4" class="btn btn-outline-warning"></p>
+      <br>
+    </h5>
+      <br>
+      <br>
+      <h1> Your REAL income </h1>
+      <br>
+      Uncle Sam will take first dibs on your paycheck. This will account for federal taxes, Social Security and Medicare combined. Along with state taxes and workplace benefits. Workplace benefits like medical and dental insurance or a retirement savings plan. Whether or not you want to calculate your budget before or after those expenses is up to you. 
+      <br>
+      <br>
+      <br>
+      <h2> You do You.</h2>
+      The budget breakdown above is only a estimator. Every person will have different budgets according to their lifestyle i.e. single vs. married, kids vs. no kids. So it is important to readjust your budget to exactly fit your needs. 
+      <br>
+
+      If you live with roommates, you rent may be below 30% and if you have lots of credit card and student loan debt, you may need to increase your debt repayment. Know what works for you. 
+<br>
+<br>
+<img src="taxes.png" width="400" height="300">
+<br>
+<br>
+<br>
+      <h1>Getting an exact measure of how much you are spending</h1>
+      <br>
+      <h2> Utilities</h2>
+      <br>
+      Where you live may increase or decrease your utility bill. Someone in Nevada may have a higher electricity bill than someone living in New York. Air conditioning, and heat are factors you want to consider when creating your budget. 
+      <br>
+      <br>
+      <h2> Internet, Cable & Phone</h2>
+      <br>
+      Thinking about using a family cell phone plan as opposed to a single plan will be cheaper. Or thinking about changing service providers will also provide helpful. 
+      <br>
+      Also, cutting cable and buying a chromecast or Roku will also save you in the long run.
+<br>
+<br>
+<p class= "aligncenter">
+<img src="state.png" width="600" height="400">
+</p>
+
+     
+
+    </section>
+
+
+    
+<br>
+<br>
+   
+
+    
+    <br>
+    <section id="services">
+      <h1>Time to Customize your Budget!</h1>
+      <br>
+      <p><strong>Now that you have learned a little bit about how to create a budget, time to make a budget specifically tailored to you!</strong>
+        <br>
+        <br>
+
+
+
+          This is a budget pdf worksheet provided by the government. 
+          <br>
+          <i> <a href="gov_budget_worksheet.pdf" class="fas fa-file fa-7x"></a></i>
+          <br>
+          <br>
+          This is a budget pdf worksheet provided by Dave Ramsey, the financial guru. 
+          <br>
+          <i> <a href="dave_ramsey_worksheet.pdf" class="fas fa-file-invoice fa-7x"></a></i>
+          <br>
+          <br>
+          Or if you would prefer a downloadable excel spreadsheet.
+          <br>
+          <i> <a href="excel_worksheet.xlsx" class="fas fa-file-download fa-7x"></a></i>
+
+
+      </p>
+<br>
+<br>
+<br>
+        <h1>Here is a calculator in case you need to do some calculations regarding your budget!</h1>
+        <br>
+        <div id='calc-contain'>
+  
+          <form name="calculator">
+            
+            <input type="text" name="answer" />
+            <br>
+            
+            <input type="button" value=" 1 " onclick="calculator.answer.value += '1'" />
+            <input type="button" value=" 2 " onclick="calculator.answer.value += '2'" />
+            <input type="button" value=" 3 " onclick="calculator.answer.value += '3'" />
+            <input type="button" value=" + " onclick="calculator.answer.value += '+'" />
+            <br/>
+            
+            <input type="button" value=" 4 " onclick="calculator.answer.value += '4'" />
+            <input type="button" value=" 5 " onclick="calculator.answer.value += '5'" />
+            <input type="button" value=" 6 " onclick="calculator.answer.value += '6'" />
+            <input type="button" value=" - " onclick="calculator.answer.value += '-'" />
+            </br>
+          
+            <input type="button" value=" 7 " onclick="calculator.answer.value += '7'" />
+            <input type="button" value=" 8 " onclick="calculator.answer.value += '8'" />
+            <input type="button" value=" 9 " onclick="calculator.answer.value += '9'" />
+            <input type="button" value=" x " onclick="calculator.answer.value += '*'" />
+            </br>
+        
+            <input type="button" value=" c " onclick="calculator.answer.value = ''" />
+            <input type="button" value=" 0 " onclick="calculator.answer.value += '0'" />
+            <input type="button" value=" = " onclick="calculator.answer.value = eval(calculator.answer.value)" />
+            <input type="button" value=" / " onclick="calculator.answer.value += '/'" />
+            </br>
+  
+    
+          </form>
+          
+        </div>
+        <br>
+        <br>
+        
+ 
+
+<br>
+<br>
+  
+
+  <!-- <img src="state.png" width="600" height="400"> -->
+
+ <!-- CARD COLUMNS -->
+        <div class="card-columns">
+            <div class="card">
+                <img class="card-img-top img-fluid" src="debty.png" alt="">
+                <div class="card-body">
+                    <h4 class="card-title">10 steps to getting out of debt in a year!</h4>
+                    <p class="card-text"><a href="https://www.aarp.org/money/credit-loans-debt/info-07-2013/10-steps-to-becoming-debtfree-in-less-than-a-year.html">What you need to know</a></p>
+                </div>
+            </div>
+            <div class="card p-3">
+                <blockquote>
+                    <p>"We buy things we don't need with money we don't have to impress people we don't like."</p>
+                    <footer>
+                        <small>
+                            Dave Ramsey 
+                            <cite title="Source Title">in The Total Money Makeover</cite>
+                        </small>
+                    </footer>
+                </blockquote>
+            </div>
+            <div class="card">
+                <img class="card-img-top img-fluid" src="jeff.png" alt="">
+                <div class="card-body">
+                    <h4 class="card-title">Forbes</h4>
+                    <p class="card-text"><a href="https://www.forbes.com/sites/learnvest/2013/01/03/how-to-achieve-financial-success-at-every-age/#255f6b793434">How to achieve financial success at every age.</a></p>
+                    <p class="card-text">
+                        <small class="text-muted">Last updated 2 hours ago</small>
+                    </p>
+                </div>
+            </div>
+            <div class="card bg-dark text-white p-3">
+                <blockquote class="card-bodyquote">
+                    <p>“That stupid saying "What you don't know can't hurt you" is ridiculous. What you don't know can kill you. If you don't know that tractor trailer trucks hurt when hitting you, then you can play in the middle of the interstate with no fear - but that doesn't mean you won't get killed.” </p>
+                    <footer class="blockquote-footer">
+                        <small>
+                            Dave Ramsey
+                            <cite title="Source Title">in Financial Peace Revisited</cite>
+                        </small>
+                    </footer>
+                </blockquote>
+            </div>
+          
+            <div class="card">
+                <img class="card-img-top img-fluid" src="ben.png" alt="">
+            </div>
+            <div class="card p-3 text-right">
+                <blockquote class="card-bodyquote">
+                    <p>An investment in knowledge pays the best interest.</p>
+                    <footer class="blockquote-footer">
+                        <small>
+                            Benjamin Franklin
+                        </small>
+                    </footer>
+                </blockquote>
+            </div>
+            
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+<div style="margin-top:500px;"></div>
+
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+
+<script>
+    $('body').scrollspy({ target: '#main-nav' });
+
+    // Add smooth scrolling
+    $('#main-nav a').on('click', function (e) {
+      // Check for a hash value
+      if (this.hash !== '') {
+        // Prevent default behavior
+        e.preventDefault();
+
+        // Store hash
+        const hash = this.hash;
+
+        // Animate smooth scroll
+        $('html, body').animate({
+          scrollTop: $(hash).offset().top
+        }, 900, function () {
+          // Add hash to URL after scroll
+          window.location.hash = hash;
+        });
+      }
+    });
+  </script>
+
+
+
+  </body>
+</html>
