@@ -36,6 +36,8 @@ var internet;
 var cell_phone;
 var health_insurance;
 var dog_insurance;
+var mortgage;
+var household;
 
 $('.table-add').click(function () {
   var $clone = $TABLE.find('tr.hide').clone(true).removeClass('hide table-line');
@@ -95,6 +97,8 @@ $BTN.click(function () {
     spotify = data[11];
     internet = data[12];
     cell_phone = data[13];
+    mortgage = data[14];
+    household = data[15];
   });
   getUserUID();
   // Output the result
@@ -137,7 +141,9 @@ function getUserUID() {
         netflix: netflix,
         spotify: spotify,
         internet: internet,
-        cell_phone: cell_phone
+        cell_phone: cell_phone,
+        mortgage: mortgage,
+        household: household
       })
       // console.log(rent);
       // console.log(electric);
