@@ -74,11 +74,11 @@ function getUserUID() {
       var userid = user.uid;
       var stringv = String(userid); //stringv holds string version of user.uid
       //console.log("userid",stringv);
-      // db.collection("users").doc(stringv).set({
-      //   rent: 0,
-      //   electric: 0,
-      //   food: 0,
-      //   gas: 0
+      db.collection("users").doc(stringv).set({
+        rent: 0,
+        electric: 0,
+        food: 0,
+        gas: 0
       })
       return user.uid;
     }
