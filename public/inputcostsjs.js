@@ -84,6 +84,7 @@ $BTN.click(function () {
     });
     data.push(h);
     rent = data[0];
+    console.log("data[0]: ", data[0]);
     electric = data[1];
     food = data[2];
     gas = data[3];
@@ -121,7 +122,7 @@ function setProfile() {
                  }
 }
 
-function getUserUID() {
+function writedata() {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       var userid = user.uid;
@@ -147,9 +148,9 @@ function getUserUID() {
       })
       // console.log(rent);
       // console.log(electric);
-      getData();
+      //getData();
 
-      return user.uid;
+      //return user.uid;
     }
   });
 }
@@ -184,7 +185,7 @@ function getStringUserUID() {
   });
 }
 
-getStringUserUID();
+//getStringUserUID();
 //var docRef = db.collection("users").doc(getStringUserUID());
 //console.log(stringUser);
 var totalcost = 0;
@@ -198,13 +199,8 @@ function getData() {
           console.log("Document data:", doc.data());
           item = JSON.stringify(doc.data());
           item1 = JSON.parse(item);
-          totalcost = parseInt(item1.value1.cost) + parseInt(item1.value2.cost) + parseInt(item1.value3.cost) + parseInt(item1.value4.cost) + parseInt(item1.value5.cost) + parseInt(item1.value6.cost) + parseInt(item1.value7.cost) + parseInt(item1.value8.cost) + parseInt(item1.value9.cost) + parseInt(item1.value10.cost)+
-          parseInt(item1.value11.cost)+
-          parseInt(item1.value12.cost)+
-          parseInt(item1.value13.cost)+
-          parseInt(item1.value14.cost)+
-          parseInt(item1.value15.cost)+
-          parseInt(item1.value16.cost);
+          console.log("hereee", item1.value1.cost);
+         totalcost = parseInt(item1.value1.cost) + parseInt(item1.value2.cost) + parseInt(item1.value3.cost) + parseInt(item1.value4.cost) + parseInt(item1.value5.cost) + parseInt(item1.value6.cost) + parseInt(item1.value7.cost) + parseInt(item1.value8.cost) + parseInt(item1.value9.cost) + parseInt(item1.value10.cost) + parseInt(item1.value11.cost)+ parseInt(item1.value12.cost)+ parseInt(item1.value13.cost)+ parseInt(item1.value14.cost)+ parseInt(item1.value15.cost)+ parseInt(item1.value16.cost);
           
           db.collection('users').doc(firebase.auth().currentUser.uid).update({
               value0: totalcost
@@ -221,7 +217,7 @@ function getData() {
 }
 //console.log(stringUser);
 
-function pushtotalvalue() {
+//function pushtotalvalue() {
     console.log('heyyyy');
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
@@ -242,28 +238,32 @@ function pushtotalvalue() {
   });
 }
 
-function readfinal() {
-console.log('hiiiiiiii');
-  var docRef = db.collection('users').doc(user.uid);
-  console.log(user.uid);
-  docRef.get().then(function(doc) {
-      if (doc.exists) {
-          console.log("Document data:", doc.data());
-          
-      } else {
-          // doc.data() will be undefined in this case
-          console.log("No such document!");
-      }
-  }).catch(function(error) {
-      console.log("Error getting document:", error);
-  });
-};
+function printstuff(){
+    console.log('safdl;jksafdj;l');
+    firebase.auth().onAuthStateChanged((user) =>{
+        if(user){
+            var docRef= db.collection('users').doc(user.uid);
+docRef.get().then(function(doc) {
+    if (doc.exists) {
+        console.log("Document data:", doc.data());
+    } else {
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
+    }
+}).catch(function(error) {
+    console.log("Error getting document:", error);
+});
+        }
+    });
+
+}
 // initFirebaseAuth();
-checkSetup();
-setProfile();
-getUserUID();
+//checkSetup();
+//setProfile();
+//writedata();
 //readfinal();
-getData();
+//getData();
+printstuff();
 //readfinal();
 //getData();
 //pushUserUID();

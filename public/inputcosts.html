@@ -1,24 +1,9 @@
-<!DOCTYPE html>
+g<!DOCTYPE html>
 <html lang="en" >
 
 <head>
-
-  <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
-  <script>
-    // Initialize Firebase
-    var config = {
-      apiKey: "AIzaSyC57E-X0VuGn9U0rZlCTU-L5Gt1_vv07cA",
-      authDomain: "budgetbud-a9544.firebaseapp.com",
-      databaseURL: "https://budgetbud-a9544.firebaseio.com",
-      projectId: "budgetbud-a9544",
-      storageBucket: "budgetbud-a9544.appspot.com",
-      messagingSenderId: "967232630452"
-    };
-    firebase.initializeApp(config);
-  </script>
-
   <meta charset="UTF-8">
-
+ 
   <link rel='stylesheet' href='http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css'>
 <link rel='stylesheet' href='http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css'>
 <!-- <link rel="stylesheet" href="style.css"> -->
@@ -61,232 +46,309 @@
 }
 
 </style>
-
+   <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
+ <script>
+   // Initialize Firebase
+   var config = {
+     apiKey: "AIzaSyC57E-X0VuGn9U0rZlCTU-L5Gt1_vv07cA",	
+     authDomain: "budgetbud-a9544.firebaseapp.com",	
+     databaseURL: "https://budgetbud-a9544.firebaseio.com",	
+     projectId: "budgetbud-a9544",	
+     storageBucket: "budgetbud-a9544.appspot.com",	
+     messagingSenderId: "967232630452"	
+   };	
+   firebase.initializeApp(config);	
+ </script>
 </head>
 
 <body>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-      // // The Firebase SDK is initialized and available here!
-      //
-      // firebase.auth().onAuthStateChanged(user => { });
-      // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-      // firebase.messaging().requestPermission().then(() => { });
-      // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-      //
-      // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-      try {
-        let app = firebase.app();
-        let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');
-      } catch (e) {
-        console.error(e);
-      }
-    });
-  </script>
-
+    
+    <script>
+   document.addEventListener('DOMContentLoaded', function() {
+     // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+     // // The Firebase SDK is initialized and available here!
+     //	
+     // firebase.auth().onAuthStateChanged(user => { });
+     // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
+     // firebase.messaging().requestPermission().then(() => { });
+     // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });	
+     //
+     // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥	
+     try {	
+       let app = firebase.app();	
+       let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');	
+     } catch (e) {	
+       console.error(e);	
+     }	
+   });	
+ </script>
   <div class="container">
   <h1>Enter your monthly budget costs</h1>
   <br>
   <br>
   <ul>
-    <li>Don't worry if your budget changes, you can edit it later!</li>
+    <li>Don't worry if your budget changes, you can edit it later!</li> 
     <li>Enter each category and the amount of money you have to spend for that category per month.</li>
   </ul>
   <br>
   <br>
-
+  
   <div id="table" class="table-editable">
-
+  
     <table class="table">
       <tr>
         <th>Category</th>
         <th>Cost</th>
-        <th></th>
-        <th></th>
+        <th>Spent</th>
+       <!--  <th></th>
+        <th></th> -->
       </tr>
+
+
       <tr>
         <td contenteditable="true">Rent</td>
         <td contenteditable="true">600</td>
-        <td>
-          <span class="table-remove glyphicon glyphicon-remove"></span>
-        </td>
+        <td contenteditable="true">20</td>
+        
+          
+        
         <td>
           <span class="table-up glyphicon glyphicon-arrow-up"></span>
           <span class="table-down glyphicon glyphicon-arrow-down"></span>
         </td>
       </tr>
+
+
+
+
       <tr>
         <td contenteditable="true">Electric</td>
         <td contenteditable="true">100</td>
-        <td>
-          <span class="table-remove glyphicon glyphicon-remove"></span>
+        <td contenteditable="true">129</td>
+        
         </td>
         <td>
           <span class="table-up glyphicon glyphicon-arrow-up"></span>
           <span class="table-down glyphicon glyphicon-arrow-down"></span>
         </td>
       </tr>
+
+
+
       <tr>
         <td contenteditable="true">Food</td>
         <td contenteditable="true">200</td>
-        <td>
-          <span class="table-remove glyphicon glyphicon-remove"></span>
-        </td>
+        <td contenteditable="true">129</td>
+
+        
         <td>
           <span class="table-up glyphicon glyphicon-arrow-up"></span>
           <span class="table-down glyphicon glyphicon-arrow-down"></span>
         </td>
       </tr>
-      <tr>
+
+
+
+<tr>
         <td contenteditable="true">Gas</td>
-        <td contenteditable="true">50</td>
-        <td>
-          <span class="table-remove glyphicon glyphicon-remove"></span>
-        </td>
+        <td contenteditable="true">200</td>
+        <td contenteditable="true">129</td>
+
+        
         <td>
           <span class="table-up glyphicon glyphicon-arrow-up"></span>
           <span class="table-down glyphicon glyphicon-arrow-down"></span>
         </td>
       </tr>
-     <tr>
-        <td contenteditable="true">Car Insurance</td>
+
+
+
+    <tr>
+        <td contenteditable="true">car insurance</td>
         <td contenteditable="true">100</td>
-        <td>
-          <span class="table-remove glyphicon glyphicon-remove"></span>
-        </td>
-        <td>
-          <span class="table-up glyphicon glyphicon-arrow-up"></span>
-          <span class="table-down glyphicon glyphicon-arrow-down"></span>
-        </td>
-      </tr>
-      <tr>
-        <td contenteditable="true">Health Insurance</td>
-        <td contenteditable="true">70</td>
-        <td>
-          <span class="table-remove glyphicon glyphicon-remove"></span>
-        </td>
+        <td contenteditable="true">129</td>
+
+        
         <td>
           <span class="table-up glyphicon glyphicon-arrow-up"></span>
           <span class="table-down glyphicon glyphicon-arrow-down"></span>
         </td>
       </tr>
+
+
       <tr>
-        <td contenteditable="true">Dog Expenses</td>
-        <td contenteditable="true">110</td>
-        <td>
-          <span class="table-remove glyphicon glyphicon-remove"></span>
-        </td>
+        <td contenteditable="true">health insurance</td>
+        <td contenteditable="true">200</td>
+        <td contenteditable="true">129</td>
+
+        
         <td>
           <span class="table-up glyphicon glyphicon-arrow-up"></span>
           <span class="table-down glyphicon glyphicon-arrow-down"></span>
         </td>
       </tr>
-      <tr>
+
+
+    <tr>
+        <td contenteditable="true">dog expenses</td>
+        <td contenteditable="true">200</td>
+        <td contenteditable="true">129</td>
+
+        
+        <td>
+          <span class="table-up glyphicon glyphicon-arrow-up"></span>
+          <span class="table-down glyphicon glyphicon-arrow-down"></span>
+        </td>
+      </tr>
+
+
+    <tr>
         <td contenteditable="true">Dental Insurance</td>
-        <td contenteditable="true">100</td>
-        <td>
-          <span class="table-remove glyphicon glyphicon-remove"></span>
-        </td>
-        <td>
-          <span class="table-up glyphicon glyphicon-arrow-up"></span>
-          <span class="table-down glyphicon glyphicon-arrow-down"></span>
-        </td>
-      </tr>
-      <tr>
-        <td contenteditable="true">Dog Insurance</td>
-        <td contenteditable="true">50</td>
-        <td>
-          <span class="table-remove glyphicon glyphicon-remove"></span>
-        </td>
+        <td contenteditable="true">200</td>
+        <td contenteditable="true">129</td>
+
+        
         <td>
           <span class="table-up glyphicon glyphicon-arrow-up"></span>
           <span class="table-down glyphicon glyphicon-arrow-down"></span>
         </td>
       </tr>
-      <tr>
-        <td contenteditable="true">Going out Expenses</td>
-        <td contenteditable="true">85</td>
-        <td>
-          <span class="table-remove glyphicon glyphicon-remove"></span>
-        </td>
-        <td>
-          <span class="table-up glyphicon glyphicon-arrow-up"></span>
-          <span class="table-down glyphicon glyphicon-arrow-down"></span>
-        </td>
-      </tr>
-      <tr>
-        <td contenteditable="true">Netflix</td>
-        <td contenteditable="true">10</td>
-        <td>
-          <span class="table-remove glyphicon glyphicon-remove"></span>
-        </td>
+
+
+
+
+    <tr>
+        <td contenteditable="true">going out expenses</td>
+        <td contenteditable="true">200</td>
+        <td contenteditable="true">129</td>
+
+        
         <td>
           <span class="table-up glyphicon glyphicon-arrow-up"></span>
           <span class="table-down glyphicon glyphicon-arrow-down"></span>
         </td>
       </tr>
-      <tr>
-        <td contenteditable="true">Spotify</td>
-        <td contenteditable="true">10</td>
-        <td>
-          <span class="table-remove glyphicon glyphicon-remove"></span>
-        </td>
+
+
+
+
+    <tr>
+        <td contenteditable="true">netflix</td>
+        <td contenteditable="true">5</td>
+        <td contenteditable="true">129</td>
+
+        
         <td>
           <span class="table-up glyphicon glyphicon-arrow-up"></span>
           <span class="table-down glyphicon glyphicon-arrow-down"></span>
         </td>
       </tr>
-      <tr>
-        <td contenteditable="true">Internet</td>
+
+
+
+          <tr>
+        <td contenteditable="true">spotify</td>
+        <td contenteditable="true">200</td>
+        <td contenteditable="true">129</td>
+
+        
+        <td>
+          <span class="table-up glyphicon glyphicon-arrow-up"></span>
+          <span class="table-down glyphicon glyphicon-arrow-down"></span>
+        </td>
+      </tr>
+
+
+          <tr>
+        <td contenteditable="true">internet</td>
         <td contenteditable="true">40</td>
-        <td>
-          <span class="table-remove glyphicon glyphicon-remove"></span>
-        </td>
-        <td>
-          <span class="table-up glyphicon glyphicon-arrow-up"></span>
-          <span class="table-down glyphicon glyphicon-arrow-down"></span>
-        </td>
-      </tr>
-      <tr>
-        <td contenteditable="true">Cell Phone</td>
-        <td contenteditable="true">50</td>
-        <td>
-          <span class="table-remove glyphicon glyphicon-remove"></span>
-        </td>
+        <td contenteditable="true">129</td>
+
+        
         <td>
           <span class="table-up glyphicon glyphicon-arrow-up"></span>
           <span class="table-down glyphicon glyphicon-arrow-down"></span>
         </td>
       </tr>
-      <tr>
-        <td contenteditable="true">Mortgage</td>
-        <td contenteditable="true">120</td>
-        <td>
-          <span class="table-remove glyphicon glyphicon-remove"></span>
-        </td>
-        <td>
-          <span class="table-up glyphicon glyphicon-arrow-up"></span>
-          <span class="table-down glyphicon glyphicon-arrow-down"></span>
-        </td>
-      </tr>
-      <tr>
-        <td contenteditable="true">Household</td>
-        <td contenteditable="true">50</td>
-        <td>
-          <span class="table-remove glyphicon glyphicon-remove"></span>
-        </td>
+
+     
+
+         <tr>
+        <td contenteditable="true">cell phone</td>
+        <td contenteditable="true">200</td>
+        <td contenteditable="true">129</td>
+
+        
         <td>
           <span class="table-up glyphicon glyphicon-arrow-up"></span>
           <span class="table-down glyphicon glyphicon-arrow-down"></span>
         </td>
       </tr>
+
+
+
+
+    <tr>
+        <td contenteditable="true">electric</td>
+        <td contenteditable="true">200</td>
+        <td contenteditable="true">129</td>
+
+        
+        <td>
+          <span class="table-up glyphicon glyphicon-arrow-up"></span>
+          <span class="table-down glyphicon glyphicon-arrow-down"></span>
+        </td>
+      </tr>
+
+
+
+    <tr>
+        <td contenteditable="true">dental insurance</td>
+        <td contenteditable="true">200</td>
+        <td contenteditable="true">129</td>
+
+        
+        <td>
+          <span class="table-up glyphicon glyphicon-arrow-up"></span>
+          <span class="table-down glyphicon glyphicon-arrow-down"></span>
+        </td>
+      </tr>
+
+
+
+
+
+    <tr>
+        <td contenteditable="true">mortgage</td>
+        <td contenteditable="true">200</td>
+        <td contenteditable="true">129</td>
+
+        
+        <td>
+          <span class="table-up glyphicon glyphicon-arrow-up"></span>
+          <span class="table-down glyphicon glyphicon-arrow-down"></span>
+        </td>
+      </tr>
+
+
+
+    <tr>
+        <td contenteditable="true">household</td>
+        <td contenteditable="true">200</td>
+        <td contenteditable="true">129</td>
+
+        
+        <td>
+          <span class="table-up glyphicon glyphicon-arrow-up"></span>
+          <span class="table-down glyphicon glyphicon-arrow-down"></span>
+        </td>
+      </tr>
+
     </table>
   </div>
-
-  <button id="export-btn" class="btn btn-primary">Create my budget!</button>
-
+  
+  <button id="export-btn" class="btn btn-primary" onclick = >Create my budget!</button>
   <p id="export"></p>
 
   <br>
