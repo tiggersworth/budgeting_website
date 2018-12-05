@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", event => {
 
   const app = firebase.app();
-  console.log(app)
+  console.log(app);
 
 });
 
@@ -258,9 +258,9 @@ docRef.get().then(function(doc) {
 
 }
 // initFirebaseAuth();
-//checkSetup();
-//setProfile();
-//writedata();
+checkSetup();
+setProfile();
+writedata();
 //readfinal();
 getData();
 printstuff();
