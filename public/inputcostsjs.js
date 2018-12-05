@@ -262,7 +262,7 @@ docRef.get().then(function(doc) {
 //setProfile();
 //writedata();
 //readfinal();
-//getData();
+getData();
 printstuff();
 //readfinal();
 //getData();
