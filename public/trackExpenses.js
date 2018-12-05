@@ -212,14 +212,33 @@ console.log(stringUser);
 //GETDATA() RETURNS A JSON WITH 14 VALUES
 
 // JORDANS CODE STARTS HERE //
-function printstuff(){
-    console.log('safdl;jksafdj;l');
+function readData(){
+    //console.log('safdl;jksafdj;l');
+    var expenses = [['Charges', 'Percent of Budget']];
+
     firebase.auth().onAuthStateChanged((user) =>{
         if(user){
             var docRef= db.collection('users').doc(user.uid);
 docRef.get().then(function(doc) {
     if (doc.exists) {
         console.log("Document data:", doc.data());
+        var data = doc.data();
+        expenses.push([data.value1.category, data.value1.cost]);
+        expenses.push([data.value2.category, data.value2.cost]);
+        expenses.push([data.value3.category, data.value3.cost]);
+        expenses.push([data.value4.category, data.value4.cost]);
+        expenses.push([data.value5.category, data.value5.cost]);
+        expenses.push([data.value6.category, data.value6.cost]);
+        expenses.push([data.value7.category, data.value7.cost]);
+        expenses.push([data.value8.category, data.value8.cost]);
+        expenses.push([data.value9.category, data.value9.cost]);
+        expenses.push([data.value10.category, data.value10.cost]);
+        expenses.push([data.value11.category, data.value11.cost]);
+        expenses.push([data.value12.category, data.value12.cost]);
+        expenses.push([data.value13.category, data.value13.cost]);
+        expenses.push([data.value14.category, data.value14.cost]);
+        expenses.push([data.value15.category, data.value15.cost]);
+        expenses.push([data.value16.category, data.value16.cost]);
     } else {
         // doc.data() will be undefined in this case
         console.log("No such document!");
@@ -229,11 +248,16 @@ docRef.get().then(function(doc) {
 });
         }
     });
-
+    return expenses;
 }
-printstuff();
+//printstuff();
 
 $(document).ready(function() {
+  //global variable to hold expense values
+  var expenses = readData();
+  var budget = 250;
+
+  drawChart();
 
   $("#add").click(function() {
     var lastField = $("#buildyourform div:last");
@@ -260,10 +284,6 @@ $(document).ready(function() {
     fieldWrapper.append(fValue);
     $("#buildyourform").append(fieldWrapper);
   });
-
-  //global variable to hold expense values
-  var expenses;
-  var budget = 250;
 
   $("#display").click(function() {
     if(checkMissingExpenseFields()) {
