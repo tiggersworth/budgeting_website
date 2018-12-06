@@ -2,22 +2,11 @@
 <html lang="en" >
 
 <head>
-
-  <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
-  <script>
-    // Initialize Firebase
-    var config = {
-      apiKey: "AIzaSyC57E-X0VuGn9U0rZlCTU-L5Gt1_vv07cA",
-      authDomain: "budgetbud-a9544.firebaseapp.com",
-      databaseURL: "https://budgetbud-a9544.firebaseio.com",
-      projectId: "budgetbud-a9544",
-      storageBucket: "budgetbud-a9544.appspot.com",
-      messagingSenderId: "967232630452"
-    };
-    firebase.initializeApp(config);
-  </script>
-
   <meta charset="UTF-8">
+ 
+  <link rel='stylesheet' href='http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css'>
+<link rel='stylesheet' href='http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css'>
+<!-- <link rel="stylesheet" href="style.css"> -->
 <style>
 .aligncenter {
     text-align: center;
@@ -28,7 +17,6 @@
 .table-editable .glyphicon {
   font-size: 20px;
 }
-
 .table-remove {
   color: #700;
   cursor: pointer;
@@ -36,7 +24,6 @@
 .table-remove:hover {
   color: #f00;
 }
-
 .table-up, .table-down {
   color: #007;
   cursor: pointer;
@@ -44,7 +31,6 @@
 .table-up:hover, .table-down:hover {
   color: #00f;
 }
-
 .table-add {
   color: #070;
   cursor: pointer;
@@ -55,299 +41,496 @@
 .table-add:hover {
   color: #0b0;
 }
-
 </style>
-
+   <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
+ <script>
+   // Initialize Firebase
+   var config = {
+     apiKey: "AIzaSyC57E-X0VuGn9U0rZlCTU-L5Gt1_vv07cA",	
+     authDomain: "budgetbud-a9544.firebaseapp.com",	
+     databaseURL: "https://budgetbud-a9544.firebaseio.com",	
+     projectId: "budgetbud-a9544",	
+     storageBucket: "budgetbud-a9544.appspot.com",	
+     messagingSenderId: "967232630452"	
+   };	
+   firebase.initializeApp(config);	
+     var db = firebase.firestore();
+ </script>
+    
+    
+    <script> 
+    function writetodb(){
+        document.addEventListener("DOMContentLoaded", event => {
+  const app = firebase.app();
+  console.log(app);
+});
+//var db = firebase.firestore();
+        var $TABLE = $('#table');
+var $BTN = $('#export-btn');
+var $EXPORT = $('#export');
+var rent;
+var electric;
+var food;
+var gas;
+var car_insurance;
+var dog_expenses;
+var dental_insurance;
+var going_out_expenses;
+var netflix;
+var spotify;
+var internet;
+var cell_phone;
+var health_insurance;
+var dog_insurance;
+var mortgage;
+var household;
+$('.table-add').click(function () {
+  var $clone = $TABLE.find('tr.hide').clone(true).removeClass('hide table-line');
+  $TABLE.find('table').append($clone);
+});
+$('.table-remove').click(function () {
+  $(this).parents('tr').detach();
+});
+$('.table-up').click(function () {
+  var $row = $(this).parents('tr');
+  if ($row.index() === 1) return; // Don't go above the header
+  $row.prev().before($row.get(0));
+});
+$('.table-down').click(function () {
+  var $row = $(this).parents('tr');
+  $row.next().after($row.get(0));
+});
+// A few jQuery helpers for exporting only
+jQuery.fn.pop = [].pop;
+jQuery.fn.shift = [].shift;
+$BTN.click(function () {
+  var $rows = $TABLE.find('tr:not(:hidden)');
+  var headers = [];
+  var data = [];
+  // Get the headers (add special header logic here)
+  $($rows.shift()).find('th:not(:empty)').each(function () {
+    headers.push($(this).text().toLowerCase());
+  });
+  // Turn all existing rows into a loopable array
+  $rows.each(function () {
+    var $td = $(this).find('td');
+    var h = {};
+    // Use the headers from earlier to name our hash keys
+    headers.forEach(function (header, i) {
+      h[header] = $td.eq(i).text();
+    });
+    data.push(h);
+    rent = data[0];
+    electric = data[1];
+    food = data[2];
+    gas = data[3];
+    car_insurance = data[4];
+    health_insurance = data[5];
+    dog_expenses = data[6];
+    dental_insurance = data[7];
+    going_out_expenses = data[8];
+    netflix = data[9];
+    spotify = data[10];
+    internet = data[11];
+    cell_phone = data[12];
+    mortgage = data[13];
+    household = data[14];
+  });
+  //getUserUID();
+  // Output the result
+  $EXPORT.text(JSON.stringify(data));
+    console.log("now running write data");
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      var userid = user.uid;
+      var stringv = String(userid); //stringv holds string version of user.uid
+      // console.log("userid",stringv);
+      db.collection('users').doc(stringv).set({
+        value1: rent,
+        value2: electric,
+        value3: food,
+        value4: gas,
+        value5: car_insurance,
+        value6: health_insurance,
+        value7: dog_expenses,
+        value8: dental_insurance,
+        value9: going_out_expenses,
+        value10: netflix,
+        value11: spotify,
+        value12: internet,
+        value13: cell_phone,
+        value14: mortgage,
+        value15: household
+      })
+      // console.log(rent);
+      // console.log(electric);
+      //getData();
+      //return user.uid;
+    }
+  });
+});
+        
+    }
+</script>
+    <script>
+        function filloutfields(){
+            console.log("now running getdata");
+    firebase.auth().onAuthStateChanged((user) =>{
+        if(user){
+            var docRef= db.collection('users').doc(user.uid);
+docRef.get().then(function(doc) {
+    if (doc.exists) {
+        //console.log("Document data:", doc.data());
+          item = JSON.stringify(doc.data());
+          item1 = JSON.parse(item);
+          //console.log("hereee", item1.value1.cost);
+        rentspent = parseInt(item1.value1.spent);
+        document.getElementById("rentspent").innerHTML = rentspent;
+        electricspent = parseInt(item1.value2.spent);
+        document.getElementById("electricspent").innerHTML = electricspent;
+        foodspent = parseInt(item1.value3.spent);
+        document.getElementById("foodspent").innerHTML = foodspent;
+        gasspent = parseInt(item1.value4.spent);
+        document.getElementById("gasspent").innerHTML = gasspent;
+        carinsspent = parseInt(item1.value5.spent);
+        document.getElementById("carinsspent").innerHTML = carinsspent;
+        healthinsspent = parseInt(item1.value6.spent);
+        document.getElementById("healthinsspent").innerHTML = healthinsspent;
+        dogexpspent = parseInt(item1.value7.spent);
+        document.getElementById("dogexpspent").innerHTML = dogexpspent;
+        dentalinsspent = parseInt(item1.value8.spent);
+        document.getElementById("dentalinsspent").innerHTML = dentalinsspent;
+        goingoutexpspent = parseInt(item1.value9.spent);
+        document.getElementById("goingoutexpspent").innerHTML = goingoutexpspent;
+        netflixspent = parseInt(item1.value10.spent);
+        document.getElementById("netflixspent").innerHTML = netflixspent;
+        spotifyspent = parseInt(item1.value11.spent);
+        document.getElementById("spotifyspent").innerHTML = spotifyspent;
+        internetspent = parseInt(item1.value12.spent);
+        document.getElementById("internetspent").innerHTML = internetspent;
+        cellphonespent = parseInt(item1.value13.spent);
+        document.getElementById("cellphonespent").innerHTML = cellphonespent;
+        mortgagespent = parseInt(item1.value14.spent);
+        document.getElementById("mortgagespent").innerHTML = mortgagespent;
+        householdspent = parseInt(item1.value15.spent);
+        document.getElementById("householdspent").innerHTML = householdspent;
+         
+        
+        rentcost = parseInt(item1.value1.cost);
+        document.getElementById("rentcost").innerHTML = rentcost;
+        electriccost = parseInt(item1.value2.cost);
+        document.getElementById("electriccost").innerHTML = electriccost;
+        foodcost = parseInt(item1.value3.cost);
+        document.getElementById("foodcost").innerHTML = foodcost;
+        gascost = parseInt(item1.value4.cost);
+        document.getElementById("gascost").innerHTML = gascost;
+        carinscost = parseInt(item1.value5.cost);
+        document.getElementById("carinscost").innerHTML = carinscost;
+        healthinscost = parseInt(item1.value6.cost);
+        document.getElementById("healthinscost").innerHTML = healthinscost;
+        dogexpcost = parseInt(item1.value7.cost);
+        document.getElementById("dogexpcost").innerHTML = dogexpcost;
+        dentalinscost = parseInt(item1.value8.cost);
+        document.getElementById("dentalinscost").innerHTML = dentalinscost;
+        goingoutexpcost = parseInt(item1.value9.cost);
+        document.getElementById("goingoutexpcost").innerHTML = goingoutexpcost;
+        netflixcost = parseInt(item1.value10.cost);
+        document.getElementById("netflixcost").innerHTML = netflixcost;
+        spotifycost = parseInt(item1.value11.cost);
+        document.getElementById("spotifycost").innerHTML = spotifycost;
+        internetcost = parseInt(item1.value12.cost);
+        document.getElementById("internetcost").innerHTML = internetcost;
+        cellphonecost = parseInt(item1.value13.cost);
+        document.getElementById("cellphonecost").innerHTML = cellphonecost;
+        
+        mortgagecost = parseInt(item1.value14.cost);
+        document.getElementById("mortgagecost").innerHTML = mortgagecost;
+        householdcost = parseInt(item1.value15.cost);
+        document.getElementById("householdcost").innerHTML = householdcost;
+        
+        totalcost = parseInt(item1.value1.cost) + parseInt(item1.value2.cost) + parseInt(item1.value3.cost) + parseInt(item1.value4.cost) + parseInt(item1.value5.cost) + parseInt(item1.value6.cost) + parseInt(item1.value7.cost) + parseInt(item1.value8.cost) + parseInt(item1.value9.cost) + parseInt(item1.value10.cost) + parseInt(item1.value11.cost)+ parseInt(item1.value12.cost)+ parseInt(item1.value13.cost)+ parseInt(item1.value14.cost)+ parseInt(item1.value15.cost)
+        
+          //console.log('totalcost: ', totalcost);
+          
+    } else {
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
+    }
+}).catch(function(error) {
+    console.log("Error getting document:", error);
+});
+        }
+    });
+        }
+    </script>
 </head>
 
-<body>
+<body onload = "filloutfields()">
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-      // // The Firebase SDK is initialized and available here!
-      //
-      // firebase.auth().onAuthStateChanged(user => { });
-      // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-      // firebase.messaging().requestPermission().then(() => { });
-      // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-      //
-      // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-      try {
-        let app = firebase.app();
-        let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');
-      } catch (e) {
-        console.error(e);
-      }
-    });
-  </script>
     
-    <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom fonts for this template -->
-    <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="css/one-page-wonder.min.css" rel="stylesheet">
-
-
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom static-top">
-      <div class="container">
-        <a class="navbar-brand" href="home_page.html">Home</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-          
-        <a class="navbar-brand" href="track_expenses.html">Tracker</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-          
-        <a class="navbar-brand" href="budget_calculator.html">Calculator</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-          
-        <a class="navbar-brand" href="fico.html">Fico</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-          
-        <a class="navbar-brand" href="incomesplit.html">Income</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-          
-        <a class="navbar-brand" href="monthlyrec.html">Recommendator</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-          
-        <a class="navbar-brand" href="give_feedback.html">Feedback</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-          
-          
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="login.html">Log In</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="profile.html">Profile</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    
+    <script>
+   document.addEventListener('DOMContentLoaded', function() {
+     // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+     // // The Firebase SDK is initialized and available here!
+     //	
+     // firebase.auth().onAuthStateChanged(user => { });
+     // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
+     // firebase.messaging().requestPermission().then(() => { });
+     // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });	
+     //
+     // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥	
+     try {	
+       let app = firebase.app();	
+       let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');	
+     } catch (e) {	
+       console.error(e);	
+     }	
+   });	
+ </script>
   <div class="container">
   <h1>Enter your monthly budget costs</h1>
   <br>
   <br>
   <ul>
-    <li>Don't worry if your budget changes, you can edit it later!</li>
+    <li>Don't worry if your budget changes, you can edit it later!</li> 
     <li>Enter each category and the amount of money you have to spend for that category per month.</li>
   </ul>
   <br>
   <br>
-
+  
   <div id="table" class="table-editable">
-
+  
     <table class="table">
       <tr>
         <th>Category</th>
-        <th>C$st per month</th>
-        <th></th>
-        <th></th>
+        <th>Cost</th>
+        <th>Spent</th>
+       <!--  <th></th>
+        <th></th> -->
       </tr>
+
+
       <tr>
         <td contenteditable="true">Rent</td>
-        <td contenteditable="true">600</td>
-        <td>
-          <span class="table-remove glyphicon glyphicon-remove"></span>
-        </td>
+        <td contenteditable="true" id = "rentcost"></td>
+        <td contenteditable="true" id = "rentspent"></td>
+        
+          
+        
         <td>
           <span class="table-up glyphicon glyphicon-arrow-up"></span>
           <span class="table-down glyphicon glyphicon-arrow-down"></span>
         </td>
       </tr>
+
+
+
+
       <tr>
         <td contenteditable="true">Electric</td>
-        <td contenteditable="true">100</td>
-        <td>
-          <span class="table-remove glyphicon glyphicon-remove"></span>
-        </td>
+        <td contenteditable="true" id = "electriccost"></td>
+        <td contenteditable="true" id = "electricspent"></td>
+        
+    
         <td>
           <span class="table-up glyphicon glyphicon-arrow-up"></span>
           <span class="table-down glyphicon glyphicon-arrow-down"></span>
         </td>
       </tr>
+
+
+
       <tr>
         <td contenteditable="true">Food</td>
-        <td contenteditable="true">200</td>
-        <td>
-          <span class="table-remove glyphicon glyphicon-remove"></span>
-        </td>
+        <td contenteditable="true" id = "foodcost"></td>
+        <td contenteditable="true" id = "foodspent"></td>
+
+        
         <td>
           <span class="table-up glyphicon glyphicon-arrow-up"></span>
           <span class="table-down glyphicon glyphicon-arrow-down"></span>
         </td>
       </tr>
-      <tr>
+
+
+
+        <tr>
         <td contenteditable="true">Gas</td>
-        <td contenteditable="true">50</td>
-        <td>
-          <span class="table-remove glyphicon glyphicon-remove"></span>
-        </td>
-        <td>
-          <span class="table-up glyphicon glyphicon-arrow-up"></span>
-          <span class="table-down glyphicon glyphicon-arrow-down"></span>
-        </td>
-      </tr>
-     <tr>
-        <td contenteditable="true">Car Insurance</td>
-        <td contenteditable="true">100</td>
-        <td>
-          <span class="table-remove glyphicon glyphicon-remove"></span>
-        </td>
+        <td contenteditable="true" id = "gascost"></td>
+        <td contenteditable="true" id = "gasspent"></td>
+
+        
         <td>
           <span class="table-up glyphicon glyphicon-arrow-up"></span>
           <span class="table-down glyphicon glyphicon-arrow-down"></span>
         </td>
       </tr>
+
+
+
+    <tr>
+        <td contenteditable="true">car insurance</td>
+        <td contenteditable="true"id = "carinscost"></td>
+        <td contenteditable="true"id = "carinsspent"></td>
+
+        
+        <td>
+          <span class="table-up glyphicon glyphicon-arrow-up"></span>
+          <span class="table-down glyphicon glyphicon-arrow-down"></span>
+        </td>
+      </tr>
+
+
       <tr>
-        <td contenteditable="true">Health Insurance</td>
-        <td contenteditable="true">70</td>
-        <td>
-          <span class="table-remove glyphicon glyphicon-remove"></span>
-        </td>
-        <td>
-          <span class="table-up glyphicon glyphicon-arrow-up"></span>
-          <span class="table-down glyphicon glyphicon-arrow-down"></span>
-        </td>
-      </tr>
-      <tr>
-        <td contenteditable="true">Dog Expenses</td>
-        <td contenteditable="true">110</td>
-        <td>
-          <span class="table-remove glyphicon glyphicon-remove"></span>
-        </td>
+        <td contenteditable="true">health insurance</td>
+        <td contenteditable="true" id = "healthinscost"></td>
+        <td contenteditable="true" id = "healthinsspent"></td>
+
+        
         <td>
           <span class="table-up glyphicon glyphicon-arrow-up"></span>
           <span class="table-down glyphicon glyphicon-arrow-down"></span>
         </td>
       </tr>
-      <tr>
+
+
+    <tr>
+        <td contenteditable="true">dog expenses</td>
+        <td contenteditable="true" id = "dogexpcost"></td>
+        <td contenteditable="true" id = "dogexpspent"></td>
+
+        
+        <td>
+          <span class="table-up glyphicon glyphicon-arrow-up"></span>
+          <span class="table-down glyphicon glyphicon-arrow-down"></span>
+        </td>
+      </tr>
+
+
+    <tr>
         <td contenteditable="true">Dental Insurance</td>
-        <td contenteditable="true">100</td>
-        <td>
-          <span class="table-remove glyphicon glyphicon-remove"></span>
-        </td>
-        <td>
-          <span class="table-up glyphicon glyphicon-arrow-up"></span>
-          <span class="table-down glyphicon glyphicon-arrow-down"></span>
-        </td>
-      </tr>
-      <tr>
-        <td contenteditable="true">Dog Insurance</td>
-        <td contenteditable="true">50</td>
-        <td>
-          <span class="table-remove glyphicon glyphicon-remove"></span>
-        </td>
+        <td contenteditable="true" id = "dentalinscost"></td>
+        <td contenteditable="true" id = "dentalinsspent"></td>
+
+        
         <td>
           <span class="table-up glyphicon glyphicon-arrow-up"></span>
           <span class="table-down glyphicon glyphicon-arrow-down"></span>
         </td>
       </tr>
-      <tr>
-        <td contenteditable="true">Going out Expenses</td>
-        <td contenteditable="true">85</td>
-        <td>
-          <span class="table-remove glyphicon glyphicon-remove"></span>
-        </td>
-        <td>
-          <span class="table-up glyphicon glyphicon-arrow-up"></span>
-          <span class="table-down glyphicon glyphicon-arrow-down"></span>
-        </td>
-      </tr>
-      <tr>
-        <td contenteditable="true">Netflix</td>
-        <td contenteditable="true">10</td>
-        <td>
-          <span class="table-remove glyphicon glyphicon-remove"></span>
-        </td>
+
+
+
+
+    <tr>
+        <td contenteditable="true">going out expenses</td>
+        <td contenteditable="true" id = "goingoutexpcost"></td>
+        <td contenteditable="true" id = "goingoutexpspent"></td>
+
+        
         <td>
           <span class="table-up glyphicon glyphicon-arrow-up"></span>
           <span class="table-down glyphicon glyphicon-arrow-down"></span>
         </td>
       </tr>
-      <tr>
-        <td contenteditable="true">Spotify</td>
-        <td contenteditable="true">10</td>
-        <td>
-          <span class="table-remove glyphicon glyphicon-remove"></span>
-        </td>
-        <td>
-          <span class="table-up glyphicon glyphicon-arrow-up"></span>
-          <span class="table-down glyphicon glyphicon-arrow-down"></span>
-        </td>
-      </tr>
-      <tr>
-        <td contenteditable="true">Internet</td>
-        <td contenteditable="true">40</td>
-        <td>
-          <span class="table-remove glyphicon glyphicon-remove"></span>
-        </td>
+
+
+
+
+    <tr>
+        <td contenteditable="true">netflix</td>
+        <td contenteditable="true" id = "netflixcost"></td>
+        <td contenteditable="true" id = "netflixspent"></td>
+
+        
         <td>
           <span class="table-up glyphicon glyphicon-arrow-up"></span>
           <span class="table-down glyphicon glyphicon-arrow-down"></span>
         </td>
       </tr>
-      <tr>
-        <td contenteditable="true">Cell Phone</td>
-        <td contenteditable="true">50</td>
-        <td>
-          <span class="table-remove glyphicon glyphicon-remove"></span>
-        </td>
-        <td>
-          <span class="table-up glyphicon glyphicon-arrow-up"></span>
-          <span class="table-down glyphicon glyphicon-arrow-down"></span>
-        </td>
-      </tr>
-      <tr>
-        <td contenteditable="true">Mortgage</td>
-        <td contenteditable="true">120</td>
-        <td>
-          <span class="table-remove glyphicon glyphicon-remove"></span>
-        </td>
+
+
+
+          <tr>
+        <td contenteditable="true">spotify</td>
+        <td contenteditable="true"id = "spotifycost"></td>
+        <td contenteditable="true" id = "spotifyspent"></td>
+
+        
         <td>
           <span class="table-up glyphicon glyphicon-arrow-up"></span>
           <span class="table-down glyphicon glyphicon-arrow-down"></span>
         </td>
       </tr>
-      <tr>
-        <td contenteditable="true">Household</td>
-        <td contenteditable="true">50</td>
-        <td>
-          <span class="table-remove glyphicon glyphicon-remove"></span>
-        </td>
+
+
+          <tr>
+        <td contenteditable="true">internet</td>
+        <td contenteditable="true" id = "internetcost"></td>
+        <td contenteditable="true" id = "internetspent"></td>
+
+        
         <td>
           <span class="table-up glyphicon glyphicon-arrow-up"></span>
           <span class="table-down glyphicon glyphicon-arrow-down"></span>
         </td>
       </tr>
+
+     
+
+         <tr>
+        <td contenteditable="true">cell phone</td>
+        <td contenteditable="true" id = "cellphonecost"></td>
+        <td contenteditable="true" id = "cellphonespent"></td>
+
+        
+        <td>
+          <span class="table-up glyphicon glyphicon-arrow-up"></span>
+          <span class="table-down glyphicon glyphicon-arrow-down"></span>
+        </td>
+      </tr>
+
+
+
+
+
+
+
+
+
+    <tr>
+        <td contenteditable="true">mortgage</td>
+        <td contenteditable="true" id = "mortgagecost"></td>
+        <td contenteditable="true" id = "mortgagespent"></td>
+
+        
+        <td>
+          <span class="table-up glyphicon glyphicon-arrow-up"></span>
+          <span class="table-down glyphicon glyphicon-arrow-down"></span>
+        </td>
+      </tr>
+
+
+
+    <tr>
+        <td contenteditable="true">household</td>
+        <td contenteditable="true" id = "householdcost"></td>
+        <td contenteditable="true" id = "householdspent"></td>
+
+        
+        <td>
+          <span class="table-up glyphicon glyphicon-arrow-up"></span>
+          <span class="table-down glyphicon glyphicon-arrow-down"></span>
+        </td>
+      </tr>
+
     </table>
   </div>
-
-  <button id="export-btn" class="btn btn-primary">Create my budget!</button>
-
+  
+  <button id="export-btn" class="btn btn-primary" onclick = "writetodb()">Create my budget!</button>
   <p id="export"></p>
 
+    <div id="chartContainer" style="height: 300px; width: 100%;"></div>
   <br>
   <br>
   <p class= "aligncenter">
@@ -359,7 +542,11 @@
 <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js'></script>
 <script src='https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js'></script>
 <script src='http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore.js'></script>
-<script  src="inputcostsjs.js"></script>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+
+
+<script src="inputcostsjs.js"></script>
 
 
 

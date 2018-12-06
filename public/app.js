@@ -79,7 +79,7 @@ function getUserUID() {
       //   electric: 0,
       //   food: 0,
       //   gas: 0
-      })
+      }
       return user.uid;
     }
   });
