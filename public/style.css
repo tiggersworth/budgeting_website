@@ -1,19 +1,19 @@
 
-body {
-  background: white;
-}
 
 /* Profile container */
 .profile {
   margin: 20px 0;
 }
 
-/* Profile sidebar */
+/*
+ Profile sidebar 
 .profile-sidebar {
   padding: 20px 0 10px 0;
   background: #fff;
 }
+*/
 
+/*
 .profile-userpic img {
   float: none;
   margin: 0 auto;
@@ -23,6 +23,7 @@ body {
   -moz-border-radius: 50% !important;
   border-radius: 50% !important;
 }
+*/
 
 .profile-usertitle {
   margin: auto;
