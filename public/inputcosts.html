@@ -1,4 +1,4 @@
-g<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" >
 
 <head>
@@ -58,10 +58,233 @@ g<!DOCTYPE html>
      messagingSenderId: "967232630452"	
    };	
    firebase.initializeApp(config);	
+     var db = firebase.firestore();
  </script>
+    
+    
+    <script> 
+    function writetodb(){
+        document.addEventListener("DOMContentLoaded", event => {
+
+  const app = firebase.app();
+  console.log(app);
+
+});
+
+//var db = firebase.firestore();
+        var $TABLE = $('#table');
+var $BTN = $('#export-btn');
+var $EXPORT = $('#export');
+
+var rent;
+var electric;
+var food;
+var gas;
+var car_insurance;
+var dog_expenses;
+var dental_insurance;
+var going_out_expenses;
+var netflix;
+var spotify;
+var internet;
+var cell_phone;
+var health_insurance;
+var dog_insurance;
+var mortgage;
+var household;
+
+$('.table-add').click(function () {
+  var $clone = $TABLE.find('tr.hide').clone(true).removeClass('hide table-line');
+  $TABLE.find('table').append($clone);
+});
+
+$('.table-remove').click(function () {
+  $(this).parents('tr').detach();
+});
+
+$('.table-up').click(function () {
+  var $row = $(this).parents('tr');
+  if ($row.index() === 1) return; // Don't go above the header
+  $row.prev().before($row.get(0));
+});
+
+$('.table-down').click(function () {
+  var $row = $(this).parents('tr');
+  $row.next().after($row.get(0));
+});
+
+// A few jQuery helpers for exporting only
+jQuery.fn.pop = [].pop;
+jQuery.fn.shift = [].shift;
+
+$BTN.click(function () {
+  var $rows = $TABLE.find('tr:not(:hidden)');
+  var headers = [];
+  var data = [];
+
+  // Get the headers (add special header logic here)
+  $($rows.shift()).find('th:not(:empty)').each(function () {
+    headers.push($(this).text().toLowerCase());
+  });
+
+  // Turn all existing rows into a loopable array
+  $rows.each(function () {
+    var $td = $(this).find('td');
+    var h = {};
+
+    // Use the headers from earlier to name our hash keys
+    headers.forEach(function (header, i) {
+      h[header] = $td.eq(i).text();
+    });
+    data.push(h);
+    rent = data[0];
+    electric = data[1];
+    food = data[2];
+    gas = data[3];
+    car_insurance = data[4];
+    health_insurance = data[5];
+    dog_expenses = data[6];
+    dental_insurance = data[7];
+    going_out_expenses = data[8];
+    netflix = data[9];
+    spotify = data[10];
+    internet = data[11];
+    cell_phone = data[12];
+    mortgage = data[13];
+    household = data[14];
+  });
+  //getUserUID();
+  // Output the result
+
+  $EXPORT.text(JSON.stringify(data));
+    console.log("now running write data");
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      var userid = user.uid;
+      var stringv = String(userid); //stringv holds string version of user.uid
+      // console.log("userid",stringv);
+      db.collection('users').doc(stringv).set({
+        value1: rent,
+        value2: electric,
+        value3: food,
+        value4: gas,
+        value5: car_insurance,
+        value6: health_insurance,
+        value7: dog_expenses,
+        value8: dental_insurance,
+        value9: going_out_expenses,
+        value10: netflix,
+        value11: spotify,
+        value12: internet,
+        value13: cell_phone,
+        value14: mortgage,
+        value15: household
+      })
+      // console.log(rent);
+      // console.log(electric);
+      //getData();
+
+      //return user.uid;
+    }
+  });
+});
+        
+    }
+</script>
+    <script>
+        function filloutfields(){
+            console.log("now running getdata");
+    firebase.auth().onAuthStateChanged((user) =>{
+        if(user){
+            var docRef= db.collection('users').doc(user.uid);
+docRef.get().then(function(doc) {
+    if (doc.exists) {
+        //console.log("Document data:", doc.data());
+          item = JSON.stringify(doc.data());
+          item1 = JSON.parse(item);
+          //console.log("hereee", item1.value1.cost);
+        rentspent = parseInt(item1.value1.spent);
+        document.getElementById("rentspent").innerHTML = rentspent;
+        electricspent = parseInt(item1.value2.spent);
+        document.getElementById("electricspent").innerHTML = electricspent;
+        foodspent = parseInt(item1.value3.spent);
+        document.getElementById("foodspent").innerHTML = foodspent;
+        gasspent = parseInt(item1.value4.spent);
+        document.getElementById("gasspent").innerHTML = gasspent;
+        carinsspent = parseInt(item1.value5.spent);
+        document.getElementById("carinsspent").innerHTML = carinsspent;
+        healthinsspent = parseInt(item1.value6.spent);
+        document.getElementById("healthinsspent").innerHTML = healthinsspent;
+        dogexpspent = parseInt(item1.value7.spent);
+        document.getElementById("dogexpspent").innerHTML = dogexpspent;
+        dentalinsspent = parseInt(item1.value8.spent);
+        document.getElementById("dentalinsspent").innerHTML = dentalinsspent;
+        goingoutexpspent = parseInt(item1.value9.spent);
+        document.getElementById("goingoutexpspent").innerHTML = goingoutexpspent;
+        netflixspent = parseInt(item1.value10.spent);
+        document.getElementById("netflixspent").innerHTML = netflixspent;
+        spotifyspent = parseInt(item1.value11.spent);
+        document.getElementById("spotifyspent").innerHTML = spotifyspent;
+        internetspent = parseInt(item1.value12.spent);
+        document.getElementById("internetspent").innerHTML = internetspent;
+        cellphonespent = parseInt(item1.value13.spent);
+        document.getElementById("cellphonespent").innerHTML = cellphonespent;
+        mortgagespent = parseInt(item1.value14.spent);
+        document.getElementById("mortgagespent").innerHTML = mortgagespent;
+        householdspent = parseInt(item1.value15.spent);
+        document.getElementById("householdspent").innerHTML = householdspent;
+         
+        
+        rentcost = parseInt(item1.value1.cost);
+        document.getElementById("rentcost").innerHTML = rentcost;
+        electriccost = parseInt(item1.value2.cost);
+        document.getElementById("electriccost").innerHTML = electriccost;
+        foodcost = parseInt(item1.value3.cost);
+        document.getElementById("foodcost").innerHTML = foodcost;
+        gascost = parseInt(item1.value4.cost);
+        document.getElementById("gascost").innerHTML = gascost;
+        carinscost = parseInt(item1.value5.cost);
+        document.getElementById("carinscost").innerHTML = carinscost;
+        healthinscost = parseInt(item1.value6.cost);
+        document.getElementById("healthinscost").innerHTML = healthinscost;
+        dogexpcost = parseInt(item1.value7.cost);
+        document.getElementById("dogexpcost").innerHTML = dogexpcost;
+        dentalinscost = parseInt(item1.value8.cost);
+        document.getElementById("dentalinscost").innerHTML = dentalinscost;
+        goingoutexpcost = parseInt(item1.value9.cost);
+        document.getElementById("goingoutexpcost").innerHTML = goingoutexpcost;
+        netflixcost = parseInt(item1.value10.cost);
+        document.getElementById("netflixcost").innerHTML = netflixcost;
+        spotifycost = parseInt(item1.value11.cost);
+        document.getElementById("spotifycost").innerHTML = spotifycost;
+        internetcost = parseInt(item1.value12.cost);
+        document.getElementById("internetcost").innerHTML = internetcost;
+        cellphonecost = parseInt(item1.value13.cost);
+        document.getElementById("cellphonecost").innerHTML = cellphonecost;
+        
+        mortgagecost = parseInt(item1.value14.cost);
+        document.getElementById("mortgagecost").innerHTML = mortgagecost;
+        householdcost = parseInt(item1.value15.cost);
+        document.getElementById("householdcost").innerHTML = householdcost;
+        
+        totalcost = parseInt(item1.value1.cost) + parseInt(item1.value2.cost) + parseInt(item1.value3.cost) + parseInt(item1.value4.cost) + parseInt(item1.value5.cost) + parseInt(item1.value6.cost) + parseInt(item1.value7.cost) + parseInt(item1.value8.cost) + parseInt(item1.value9.cost) + parseInt(item1.value10.cost) + parseInt(item1.value11.cost)+ parseInt(item1.value12.cost)+ parseInt(item1.value13.cost)+ parseInt(item1.value14.cost)+ parseInt(item1.value15.cost)
+        
+          //console.log('totalcost: ', totalcost);
+          
+    } else {
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
+    }
+}).catch(function(error) {
+    console.log("Error getting document:", error);
+});
+        }
+    });
+        }
+    </script>
 </head>
 
-<body>
+<body onload = "filloutfields()">
 
     
     <script>
@@ -108,8 +331,8 @@ g<!DOCTYPE html>
 
       <tr>
         <td contenteditable="true">Rent</td>
-        <td contenteditable="true">600</td>
-        <td contenteditable="true">20</td>
+        <td contenteditable="true" id = "rentcost"></td>
+        <td contenteditable="true" id = "rentspent"></td>
         
           
         
@@ -124,10 +347,10 @@ g<!DOCTYPE html>
 
       <tr>
         <td contenteditable="true">Electric</td>
-        <td contenteditable="true">100</td>
-        <td contenteditable="true">129</td>
+        <td contenteditable="true" id = "electriccost"></td>
+        <td contenteditable="true" id = "electricspent"></td>
         
-        </td>
+    
         <td>
           <span class="table-up glyphicon glyphicon-arrow-up"></span>
           <span class="table-down glyphicon glyphicon-arrow-down"></span>
@@ -138,8 +361,8 @@ g<!DOCTYPE html>
 
       <tr>
         <td contenteditable="true">Food</td>
-        <td contenteditable="true">200</td>
-        <td contenteditable="true">129</td>
+        <td contenteditable="true" id = "foodcost"></td>
+        <td contenteditable="true" id = "foodspent"></td>
 
         
         <td>
@@ -150,10 +373,10 @@ g<!DOCTYPE html>
 
 
 
-<tr>
+        <tr>
         <td contenteditable="true">Gas</td>
-        <td contenteditable="true">200</td>
-        <td contenteditable="true">129</td>
+        <td contenteditable="true" id = "gascost"></td>
+        <td contenteditable="true" id = "gasspent"></td>
 
         
         <td>
@@ -166,8 +389,8 @@ g<!DOCTYPE html>
 
     <tr>
         <td contenteditable="true">car insurance</td>
-        <td contenteditable="true">100</td>
-        <td contenteditable="true">129</td>
+        <td contenteditable="true"id = "carinscost"></td>
+        <td contenteditable="true"id = "carinsspent"></td>
 
         
         <td>
@@ -179,8 +402,8 @@ g<!DOCTYPE html>
 
       <tr>
         <td contenteditable="true">health insurance</td>
-        <td contenteditable="true">200</td>
-        <td contenteditable="true">129</td>
+        <td contenteditable="true" id = "healthinscost"></td>
+        <td contenteditable="true" id = "healthinsspent"></td>
 
         
         <td>
@@ -192,8 +415,8 @@ g<!DOCTYPE html>
 
     <tr>
         <td contenteditable="true">dog expenses</td>
-        <td contenteditable="true">200</td>
-        <td contenteditable="true">129</td>
+        <td contenteditable="true" id = "dogexpcost"></td>
+        <td contenteditable="true" id = "dogexpspent"></td>
 
         
         <td>
@@ -205,8 +428,8 @@ g<!DOCTYPE html>
 
     <tr>
         <td contenteditable="true">Dental Insurance</td>
-        <td contenteditable="true">200</td>
-        <td contenteditable="true">129</td>
+        <td contenteditable="true" id = "dentalinscost"></td>
+        <td contenteditable="true" id = "dentalinsspent"></td>
 
         
         <td>
@@ -220,8 +443,8 @@ g<!DOCTYPE html>
 
     <tr>
         <td contenteditable="true">going out expenses</td>
-        <td contenteditable="true">200</td>
-        <td contenteditable="true">129</td>
+        <td contenteditable="true" id = "goingoutexpcost"></td>
+        <td contenteditable="true" id = "goingoutexpspent"></td>
 
         
         <td>
@@ -235,8 +458,8 @@ g<!DOCTYPE html>
 
     <tr>
         <td contenteditable="true">netflix</td>
-        <td contenteditable="true">5</td>
-        <td contenteditable="true">129</td>
+        <td contenteditable="true" id = "netflixcost"></td>
+        <td contenteditable="true" id = "netflixspent"></td>
 
         
         <td>
@@ -249,8 +472,8 @@ g<!DOCTYPE html>
 
           <tr>
         <td contenteditable="true">spotify</td>
-        <td contenteditable="true">200</td>
-        <td contenteditable="true">129</td>
+        <td contenteditable="true"id = "spotifycost"></td>
+        <td contenteditable="true" id = "spotifyspent"></td>
 
         
         <td>
@@ -262,8 +485,8 @@ g<!DOCTYPE html>
 
           <tr>
         <td contenteditable="true">internet</td>
-        <td contenteditable="true">40</td>
-        <td contenteditable="true">129</td>
+        <td contenteditable="true" id = "internetcost"></td>
+        <td contenteditable="true" id = "internetspent"></td>
 
         
         <td>
@@ -276,8 +499,8 @@ g<!DOCTYPE html>
 
          <tr>
         <td contenteditable="true">cell phone</td>
-        <td contenteditable="true">200</td>
-        <td contenteditable="true">129</td>
+        <td contenteditable="true" id = "cellphonecost"></td>
+        <td contenteditable="true" id = "cellphonespent"></td>
 
         
         <td>
@@ -289,31 +512,6 @@ g<!DOCTYPE html>
 
 
 
-    <tr>
-        <td contenteditable="true">electric</td>
-        <td contenteditable="true">200</td>
-        <td contenteditable="true">129</td>
-
-        
-        <td>
-          <span class="table-up glyphicon glyphicon-arrow-up"></span>
-          <span class="table-down glyphicon glyphicon-arrow-down"></span>
-        </td>
-      </tr>
-
-
-
-    <tr>
-        <td contenteditable="true">dental insurance</td>
-        <td contenteditable="true">200</td>
-        <td contenteditable="true">129</td>
-
-        
-        <td>
-          <span class="table-up glyphicon glyphicon-arrow-up"></span>
-          <span class="table-down glyphicon glyphicon-arrow-down"></span>
-        </td>
-      </tr>
 
 
 
@@ -321,8 +519,8 @@ g<!DOCTYPE html>
 
     <tr>
         <td contenteditable="true">mortgage</td>
-        <td contenteditable="true">200</td>
-        <td contenteditable="true">129</td>
+        <td contenteditable="true" id = "mortgagecost"></td>
+        <td contenteditable="true" id = "mortgagespent"></td>
 
         
         <td>
@@ -335,8 +533,8 @@ g<!DOCTYPE html>
 
     <tr>
         <td contenteditable="true">household</td>
-        <td contenteditable="true">200</td>
-        <td contenteditable="true">129</td>
+        <td contenteditable="true" id = "householdcost"></td>
+        <td contenteditable="true" id = "householdspent"></td>
 
         
         <td>
@@ -348,9 +546,10 @@ g<!DOCTYPE html>
     </table>
   </div>
   
-  <button id="export-btn" class="btn btn-primary" onclick = >Create my budget!</button>
+  <button id="export-btn" class="btn btn-primary" onclick = "writetodb()">Create my budget!</button>
   <p id="export"></p>
 
+    <div id="chartContainer" style="height: 300px; width: 100%;"></div>
   <br>
   <br>
   <p class= "aligncenter">
@@ -362,7 +561,11 @@ g<!DOCTYPE html>
 <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js'></script>
 <script src='https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js'></script>
 <script src='http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore.js'></script>
-<script  src="inputcostsjs.js"></script>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+
+
+<script src="inputcostsjs.js"></script>
 
 
 
